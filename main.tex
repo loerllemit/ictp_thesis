@@ -1,0 +1,53 @@
+\documentclass{report}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{braket}
+\usepackage{changepage}
+\usepackage[a4paper,width=150mm,top=0.75in,bottom=0.75in]{geometry}
+\usepackage{mwe}
+\usepackage{float}
+\usepackage[font=footnotesize,labelfont=bf]{caption}
+\usepackage{bbold}
+\usepackage{framed}
+\usepackage{sidecap}
+\usepackage{hyperref}
+\usepackage{setspace}
+\usepackage{notoccite}
+\usepackage{cleveref}
+\usepackage{physics}
+\usepackage{siunitx}
+
+\usepackage[style=ieee, citestyle=numeric-comp, backend=biber]{biblatex}
+
+\setlength{\parindent}{0pt}
+\renewcommand{\figurename}{Fig.}
+\newtheorem{theorem}{Theorem}
+
+\title{Towards Accurate DeepMD Potentials for Aqueous Interfaces}
+\author{Christian Loer Llemit}
+\date{August 2024}
+
+\addbibresource{references.bib}
+
+\begin{document}
+
+\maketitle
+\pagenumbering{arabic}
+%\chapter*{Abstract}
+\tableofcontents
+
+\setstretch{1.5}
+
+\include{intro}
+\include{methods}
+\include{theory}
+\include{rnd}
+\include{conclusion}
+
+\printbibliography
+
+\end{document}

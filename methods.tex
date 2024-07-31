@@ -1,0 +1,34 @@
+\chapter{Methodology}
+Initial trajectories were generated using Molecular Dynamics implemented in LAMMPS \cite{LAMMPS}. The pair potential used is based on the previously trained deep neural network potential (NNP) conducted by Sanchez-Burgos et al. \cite{sanchez2023deep}. 
+
+\begin{figure}[tbhp]
+     \centering
+     \begin{subfigure}{0.4\textwidth}
+         \centering
+         \includegraphics[width=0.8\textwidth]{bulk}
+         \caption{}
+         % \label{fig:}
+     \end{subfigure}
+     % \hfill
+     \begin{subfigure}{0.4\textwidth}
+         \centering
+         \includegraphics[width=0.7\textwidth]{interface}
+         \caption{}
+         % \label{fig:}
+     \end{subfigure}
+     \hfill
+        \caption{Typical configurations for (a) bulk and (b) slab systems.}
+        \label{fig:cryst_sctruct}
+\end{figure}
+
+For the MD simulation, a system size of 192 water molecules was used for both the bulk and slab systems, as shown in Figure \ref{fig:cryst_sctruct}. The temperature was varied from 300 K to 600 K. The simulation profile of the bulk system is as follows: NPT ensemble at 1 bar for 2 ns, and a ramp from 1 bar to 10,000 bar for 10 ns. For the slab system, the simulation was done in NVT ensemble for 10 ns and the box size was based on the average length of the corresponding bulk system at a given temperature and at 1 bar. Vacuum was introduced as to create a total length of 50 \r{A} in the direction normal to the interface. For both systems, a simulation step of 0.2 fs, thermostat relaxation time of 20 fs, and barostat relaxation time of 200 fs were applied. The surface tension was calculated according to Kirkwood-Buff equation \cite{kirkwood1949} given by 
+
+\begin{equation}
+    \gamma = \frac{L_z}{2} \left[ \expval{P_{zz}} -\frac{1}{2} \left( \expval{P_{xx}} + \expval{P_{yy}} \right) \right]
+\end{equation}
+
+The trajectories were then labeled with their energy, force, and pressure tensor using Density Functional Theory (DFT) implemented in Quantum Espresso \cite{QE-2009,QE-2017,QE-2020}. Strongly Constrained and Appropriately Normed (SCAN) exchange-correlation functional is widely used in the study of water systems due to its great predictability in describing hydrogen bonds and van der Waals interactions \cite{sun2015strongly, chen2017ab}. However, for this study, the SCAN functional tends to be not numerically robust when implemented to systems with interfaces. Instead, this study tried to use accurate and numerically efficient r$^2$SCAN meta-generalized gradient approximation \cite{Furness2020}. Optimized Norm-Conserving Vanderbilt pseudopotentials \cite{hamann2013optimized} were used with energy cutoff of 130 Ry and scf convergence threshold of \num{1e-6} Ry.  
+
+The labeled frames were then feed into DeePMD-kit code \cite{wang2018deepmd,zeng2023deepmd,lu2021,zhang2018end} for the training of deep neural network potentials. A total of 7120 bulk frames and 2160 interface frames were used as training data. The training follows a typical two-neutral network architecture. First, atomic configurations are processed by the embedding network of three layers consisting of 25, 50 and 100 neurons each. The embedding follows the two-body smooth-edition scheme \cite{NEURIPS2018} that conserves radial and angular information within the cutoff radius of 6 \r{A}. A switching function was applied for atoms beyond 5.5 \r{A} to ensure smooth cutoff.  Then, the atomic descriptors are build and given as input to a fitting network of three layers of 250 neurons each that outputs a scalar quantity such as energy. The parameters of the neural networks are set during the training procedure by minimizing  loss function based on the mean squared error on the total energy and atomic forces predicted
+by the network with respect to the reference data. The iterative minimization was performed with a total of 4 million batches and a learning rate that exponentially decay from \num{1e-3} to \num{3.51e-8}.
+

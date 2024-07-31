@@ -1,0 +1,35 @@
+\chapter{The Resource Theory of Uncomplexity}
+Objects usually acquire value when they cannot be easily obtained. They are considered resources when it is hard to generate them given a certain setting. Resource theories have been developed to help us understand how to extract useful work from the resources. These theories quantify the resources, identify which operations can be performed and which cannot, and bound the  efficiencies of these operations \cite{coecke2016mathematical,chitambar2019quantum}. Lately, resource theories have extended into the field of quantum physics, since they offer a powerful framework for physical phenomena at the quantum level. The main purpose of quantum resource theories is to study quantum information processing using restricted operations, where an agent is subject to constraints. The permissible operations are called free. The physically realizable states that can be prepared by the agent using those operations are therefore free states. Because some operations are prohibited, not all states can be prepared. Those states are called resource states. Moreover, quantum information processing consists of studying quantum states and manipulating them by using quantum gates, so allowed operations in our domain of study are chosen to be quantum gates.
+\\
+Considering how uncomplexity is useful for computational work, Brown and Susskind conjectured that a resource theory for quantum uncomplexity can be defined. Halpern et al. have recently confirmed this conjecture in the recent paper \cite{halpern2021resource}, defining the allowed operations and states, and formalizing two operational tasks: uncomplexity extraction and expenditure.
+
+\section{Allowed operations and states}
+In the resource theory of quantum uncomplexity, the allowed operations are composed from quantum gates. However, if the agent is able to choose any gate, it would then be able to perform an inverse unitary on any complex pure state to obtain the maximally uncomplex state. Uncomplexity can then be easily obtained, and this trivializes the theory. To fix this, reference \cite{halpern2021resource} introduces randomness to gates, making them ``fuzzy gates''. A fuzzy gate $\tilde{U}$ is implemented with respect to a probability distribution $\textit{p}_{\textit{U},\epsilon}(\tilde{U})$ vanishing outside of the $\epsilon$-ball of a desired gate $\textit{U}$, i.e for $\|U - \tilde{U} \| _\infty > \epsilon$, where $\epsilon > 0$. So, if the agent attempts to perform any 2-qubit gate $U \in$ SU(4) on any two qubits, the qubits undergo a gate $\tilde{U}$ chosen according to $\textit{p}_{U,\epsilon}(\tilde{U})d\tilde{U}$. Accordingly, the allowed operations are fuzzy operations, i.e. compositions of fuzzy gates.
+\\
+As for the allowed states, there are no free states in the resource theory of uncomplexity. The reason is that if we have free states, then tensoring-on states creates uncomplexity, trivializing the theory. 
+\section{The operational tasks}
+The operational tasks defined by the resource theory are, as discussed before, uncomplexity extraction and uncomplexity expenditure. In order to quantify the efficiencies of these tasks, reference \cite{halpern2021resource} defines an entropy inspired by the hypothesis-testing entropy \cite{wang2012one,datta2013smooth}, called the ``complexity entropy", that reflects the complexity. 
+\\
+Define the measurement operator Q with restricted complexity as follows:
+\\
+First, define the measurement operators of zero complexity $Q_{0}$. Under $Q_{0}$'s action, a qubit is either projected onto $\ket{0}$ or is evolved with $\mathbb{1}$. $Q_{0}$ has the following form: $\displaystyle\bigotimes_{j=1}^{n}(_{j}\ket{0}\bra{0}_{j})^{\alpha_j}$, where $\alpha_{j}$ is 1 if qubit j is projected onto $\ket{0}$ and is 0 otherwise $(\ket{0}\bra{0})^{0} \equiv \mathbb{1}$. 
+\\
+Fix an integer r $\ge$ 0. Consider performing a circuit that implements a unitary $U_{r}$, by applying $\le$ r 2-local gates, before measuring a $Q_{0}$. The operators $Q = U_{r}^{\dag}Q_{0}U_{r}$ form a set $M_{r}$.
+\\
+The ``complexity entropy" for an n-qubit state $\rho$ is defined, for $\eta \in (0,1]$ as: 
+$$ H^{r,\eta}_c (\rho) := \underset{{\substack{Q \in M_r, \\ \mathrm{Tr}(Q\rho)\ge \eta}}}{\mathrm{min}} {\mathrm{log_2(Tr(Q))}}$$
+
+% add the explanation of the letters and symbol
+
+
+The following theorems demonstrate the procedures of uncomplexity extraction and expenditure. $\rho$ is taken to be any n-qubit state. Let r $\in \mathbb{Z}_{\ge 0}$ and $\delta \ge 0$. The agent can perform $\le$ r fuzzy gates. 
+\\
+\begin{theorem}[Uncomplexity extraction] 
+Assume $\delta \ge r\epsilon$. For every $\eta \in [1 - (\delta -r\epsilon)^2, 1]$, some protocol extracts $w = n - H^{r,\eta}_c (\rho)$ qubits $\delta$-close to $\ket{0^w}$ in trace distance. Conversely, every uncomplexity-extraction protocol obeys $w \ge n - H^{r,1-\delta}_c (\rho)$.
+\end{theorem}
+
+\begin{theorem}[Uncomplexity expenditure] 
+Assume that $\delta \ge 2r\epsilon$. For every $\eta \in (0,1]$, and for every (n-w)-qubit state $\sigma$, $\rho$ can be imitated with $w = n - H^{r,\eta}_c (\rho)$ uncomplex $\ket{0}$'s.
+\end{theorem}
+Reference \cite{halpern2021resource} contains the proofs of both theorems.
+%add the figures of expenditure and extraction
