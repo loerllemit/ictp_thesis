@@ -52,6 +52,102 @@
       \field{pages}{115\bibrangedash 133}
       \range{pages}{19}
     \endentry
+    \entry{zhang2018deep}{article}{}
+      \name{author}{5}{}{%
+        {{hash=421de55f56f03a9283739635944e8e59}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Linfeng},
+           giveni={L\bibinitperiod}}}%
+        {{hash=dcbed821c92a82aa9d46cf353c58ec62}{%
+           family={Han},
+           familyi={H\bibinitperiod},
+           given={Jiequn},
+           giveni={J\bibinitperiod}}}%
+        {{hash=0664a31d75ae88d142a0e634df0ead4d}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Han},
+           giveni={H\bibinitperiod}}}%
+        {{hash=5e1c0fa125a4b92f955ca3a5852af38f}{%
+           family={Car},
+           familyi={C\bibinitperiod},
+           given={Roberto},
+           giveni={R\bibinitperiod}}}%
+        {{hash=268e9715905f2ab3cb20df636d3750c1}{%
+           family={E},
+           familyi={E\bibinitperiod},
+           given={Weinan},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {APS}%
+      }
+      \strng{namehash}{ff0b42eaa7f263509a3335ab2673f070}
+      \strng{fullhash}{4c0afd62f4f20052e08fe2445226c0fa}
+      \strng{bibnamehash}{4c0afd62f4f20052e08fe2445226c0fa}
+      \strng{authorbibnamehash}{4c0afd62f4f20052e08fe2445226c0fa}
+      \strng{authornamehash}{ff0b42eaa7f263509a3335ab2673f070}
+      \strng{authorfullhash}{4c0afd62f4f20052e08fe2445226c0fa}
+      \field{extraname}{1}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical review letters}
+      \field{number}{14}
+      \field{title}{Deep potential molecular dynamics: a scalable model with the accuracy of quantum mechanics}
+      \field{volume}{120}
+      \field{year}{2018}
+      \field{pages}{143001}
+      \range{pages}{1}
+    \endentry
+    \entry{zhang2018end}{article}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{5}{}{%
+        {{hash=421de55f56f03a9283739635944e8e59}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Linfeng},
+           giveni={L\bibinitperiod}}}%
+        {{hash=dcbed821c92a82aa9d46cf353c58ec62}{%
+           family={Han},
+           familyi={H\bibinitperiod},
+           given={Jiequn},
+           giveni={J\bibinitperiod}}}%
+        {{hash=0664a31d75ae88d142a0e634df0ead4d}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Han},
+           giveni={H\bibinitperiod}}}%
+        {{hash=c8f8ef36886fd5106f9e434a6e2cdc5a}{%
+           family={Saidi},
+           familyi={S\bibinitperiod},
+           given={Wissam},
+           giveni={W\bibinitperiod}}}%
+        {{hash=5e1c0fa125a4b92f955ca3a5852af38f}{%
+           family={Car},
+           familyi={C\bibinitperiod},
+           given={Roberto},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{ff0b42eaa7f263509a3335ab2673f070}
+      \strng{fullhash}{fe46f93eeecc8967d6f48429fc1e5c04}
+      \strng{bibnamehash}{fe46f93eeecc8967d6f48429fc1e5c04}
+      \strng{authorbibnamehash}{fe46f93eeecc8967d6f48429fc1e5c04}
+      \strng{authornamehash}{ff0b42eaa7f263509a3335ab2673f070}
+      \strng{authorfullhash}{fe46f93eeecc8967d6f48429fc1e5c04}
+      \field{extraname}{2}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Advances in neural information processing systems}
+      \field{title}{End-to-end symmetry preserving inter-atomic potential energy model for finite and extended systems}
+      \field{volume}{31}
+      \field{year}{2018}
+    \endentry
     \entry{LAMMPS}{article}{}
       \name{author}{15}{}{%
         {{hash=314ce0ba4722b3250568dd5470b8f873}{%
@@ -138,8 +234,8 @@
       \strng{authorbibnamehash}{0d83af67aff31198b99e771add88433b}
       \strng{authornamehash}{0d83af67aff31198b99e771add88433b}
       \strng{authorfullhash}{1f14e46cd0a71b5dfc7627f1a1628a9a}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Comp. Phys. Comm.}
@@ -184,8 +280,8 @@
       \strng{authorbibnamehash}{f3079054daf9e185097a56643bbfed26}
       \strng{authornamehash}{46d819370d2f4466466342da01f22209}
       \strng{authorfullhash}{f3079054daf9e185097a56643bbfed26}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{The Journal of Chemical Physics}
@@ -216,8 +312,8 @@
       \strng{authorbibnamehash}{cea6d595227515f0c96235ccaf45ce05}
       \strng{authornamehash}{cea6d595227515f0c96235ccaf45ce05}
       \strng{authorfullhash}{cea6d595227515f0c96235ccaf45ce05}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{The Journal of Chemical Physics}
@@ -405,8 +501,8 @@
       \strng{authornamehash}{78fcc0f646ec262b035bee7bb61118ce}
       \strng{authorfullhash}{6d41e71b6055371baca66e7ff3a5ebef}
       \field{extraname}{1}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Physics: Condensed Matter}
@@ -679,8 +775,8 @@
       \strng{authornamehash}{82ab617133872b1307b68d9d5e961e0f}
       \strng{authorfullhash}{b8f3377b1b273584ad7183f23f5cfb7f}
       \field{extraname}{2}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Physics: Condensed Matter}
@@ -778,8 +874,8 @@
       \strng{authornamehash}{78fcc0f646ec262b035bee7bb61118ce}
       \strng{authorfullhash}{383f3af1e610b4e30f6acbf952c5a1ca}
       \field{extraname}{3}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{The Journal of Chemical Physics}
@@ -820,8 +916,8 @@
       \strng{authorbibnamehash}{6548fe4e129d7e99ae2a904b504c9df7}
       \strng{authornamehash}{baa5532fa8b464886002373b1a6f9788}
       \strng{authorfullhash}{6548fe4e129d7e99ae2a904b504c9df7}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Physical review letters}
@@ -896,8 +992,8 @@
       \strng{authorbibnamehash}{332294cb17e9ba19c47262fc82ea1707}
       \strng{authornamehash}{332294cb17e9ba19c47262fc82ea1707}
       \strng{authorfullhash}{86ad8cf091bb7c0ad4d5bfff49fa6026}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Proceedings of the National Academy of Sciences}
@@ -942,8 +1038,8 @@
       \strng{authorbibnamehash}{64eb4ac050f0919881f07751272bc5d6}
       \strng{authornamehash}{015835c272804af667347f9dc5701871}
       \strng{authorfullhash}{64eb4ac050f0919881f07751272bc5d6}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{The Journal of Physical Chemistry Letters}
@@ -975,8 +1071,8 @@
       \strng{authorbibnamehash}{04bbe60a9183b1f06643d3d20346ce07}
       \strng{authornamehash}{04bbe60a9183b1f06643d3d20346ce07}
       \strng{authorfullhash}{04bbe60a9183b1f06643d3d20346ce07}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Physical Review B—Condensed Matter and Materials Physics}
@@ -1167,52 +1263,6 @@
       \field{pages}{107624}
       \range{pages}{1}
     \endentry
-    \entry{zhang2018end}{article}{}
-      \true{moreauthor}
-      \true{morelabelname}
-      \name{author}{5}{}{%
-        {{hash=421de55f56f03a9283739635944e8e59}{%
-           family={Zhang},
-           familyi={Z\bibinitperiod},
-           given={Linfeng},
-           giveni={L\bibinitperiod}}}%
-        {{hash=dcbed821c92a82aa9d46cf353c58ec62}{%
-           family={Han},
-           familyi={H\bibinitperiod},
-           given={Jiequn},
-           giveni={J\bibinitperiod}}}%
-        {{hash=0664a31d75ae88d142a0e634df0ead4d}{%
-           family={Wang},
-           familyi={W\bibinitperiod},
-           given={Han},
-           giveni={H\bibinitperiod}}}%
-        {{hash=c8f8ef36886fd5106f9e434a6e2cdc5a}{%
-           family={Saidi},
-           familyi={S\bibinitperiod},
-           given={Wissam},
-           giveni={W\bibinitperiod}}}%
-        {{hash=5e1c0fa125a4b92f955ca3a5852af38f}{%
-           family={Car},
-           familyi={C\bibinitperiod},
-           given={Roberto},
-           giveni={R\bibinitperiod}}}%
-      }
-      \strng{namehash}{ff0b42eaa7f263509a3335ab2673f070}
-      \strng{fullhash}{fe46f93eeecc8967d6f48429fc1e5c04}
-      \strng{bibnamehash}{fe46f93eeecc8967d6f48429fc1e5c04}
-      \strng{authorbibnamehash}{fe46f93eeecc8967d6f48429fc1e5c04}
-      \strng{authornamehash}{ff0b42eaa7f263509a3335ab2673f070}
-      \strng{authorfullhash}{fe46f93eeecc8967d6f48429fc1e5c04}
-      \field{extraname}{1}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Advances in neural information processing systems}
-      \field{title}{End-to-end symmetry preserving inter-atomic potential energy model for finite and extended systems}
-      \field{volume}{31}
-      \field{year}{2018}
-    \endentry
     \entry{NEURIPS2018}{inproceedings}{}
       \name{author}{6}{}{%
         {{hash=421de55f56f03a9283739635944e8e59}{%
@@ -1290,7 +1340,7 @@
       \strng{editorbibnamehash}{f08403ac24c2e0a0ae72822c0c0afda6}
       \strng{editornamehash}{233f4c9ba2f85af3db1eed171136508c}
       \strng{editorfullhash}{f08403ac24c2e0a0ae72822c0c0afda6}
-      \field{extraname}{2}
+      \field{extraname}{3}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}

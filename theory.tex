@@ -8,7 +8,8 @@ reactions.
 Representing PES accurately and efficiently is a major goal in molecular
 modelling.
 Existing approaches to PES modelling includes ab-initio models based on DFT,
-empirical potentials fitted with experimental data, and the relatively new
+empirical force fields fitted with experimental data, and the
+relatively recent
 machine learning based approach. The first one is accurate, parameter-free, and
 transferable but has bad scaling with system size. The second one is
 computationally efficient but has limited accuracy and transferability.
@@ -280,8 +281,38 @@ It holds the promise of transforming various aspects of human life and industry
 by enabling more intelligent, autonomous systems.
 
 \section{Deep Neural Molecular Dynamics}
+Machine Learning potentials have very flexible functional form that allows to
+represent reference data of quantum-mechanics accuracy at a cost that is
+comparable to empirical force fields. Particularly, deep learning molecular
+dynamics relies on using deep neural network trained potential (DeepPotential)
+to simulate the
+dynamics of the molecular system.  DeepPotential Method have basic assumptions
+\cite{zhang2018deep,zhang2018end},
+namely
 
-Global Coordinate matrix
+\begin{itemize}
+
+    \item  Potential energy surface (PES) is extensive, it can be expressed as
+          sum		of	     short-ranged many body atomic
+          contributions
+          \begin{equation}
+              \Phi(\vec{r}_1,\vec{r}_1,\hdots, \vec{r}_N) = \sum_i
+              \Phi_i(\{\mathcal{R}^i\})
+          \end{equation}
+          where $\Phi_i$ is represented by	     a		 function
+          of atomic coordinates within the local environment of      the
+          $i$th atom.
+    \item  the function $\Phi_i$ continuous and differentiable
+          of atomic coordinates,
+    \item the function $\Phi_i$ preserves the translational, rotational,
+          and
+          permutational symmetry of the system,
+    \item the function $\Phi_i$ is represented from end-to-end by a deep
+          neural network trained on DFT data
+\end{itemize}
+
+In regard to the first assumption, one can define first a global coordinate
+matrix
 
 \begin{equation}
     \mathcal{R} =  \mqty( x_1 & y_1 & z_1 \\ x_2 & y_2 & z_2 \\ \vdots & \ddots
@@ -290,7 +321,8 @@ Global Coordinate matrix
     x_N & y_N & z_N)
 \end{equation}
 
-Relative Coordinate Matrix with respect to atom $i$
+that lists the absolute coordinates of all the atoms. Then, define a relative
+coordinate matrix of the local environment centered on atom  $i$ as
 
 \begin{equation}
     \mathcal{R}^i =  \mqty( x_{1i} & y_{1i} & z_{1i} \\ x_{2i} & y_{2i} &
@@ -301,7 +333,12 @@ Relative Coordinate Matrix with respect to atom $i$
     x_{N_i i} & y_{N_i i} & z_{N_i i})
 \end{equation}
 
-Renormalized Coordinate Matrix
+where $N_i$ are the number of atoms within the cutoff radius $r_c$ from the
+central $i$th atom. Note that the coordinates are measured with respect to this
+central atom, $\vec{r}_{ji} = \vec{r}_{j}- \vec{r}_{i}$. To impose smoothness
+of the function, the relative coordinate matrix is mapped to  a renormalized
+coordinate matrix
+
 \begin{equation}
     \tilde{\mathcal{R}^i} =  \mqty( s(r_{1i}) &
     \frac{s(r_{1i}) x_{1i}}{r_{1i}}
@@ -331,7 +368,42 @@ where $s(r)$ is a smooth switching function defined as
 \end{equation}
 
 where $x = \frac{r- r_s}{r_c-r_s}$, $r_c$ is the cutoff radius and $r_s$ is the
-distance from atom $i$ where smoothing is applied.
+distance from atom $i$ where smoothing is applied. The	smooth cut-off
+parameter $r_s$ allows the components of $\tilde{\mathcal{R}^i}$ to
+go to zero smoothly at the boundary of the local region defined by $r_c$.
+Particularly, the smoothing function $s(r)$ reduces the weight of atoms that
+are farther from atom $i$, and at the same time removing the discontinuity
+introduced by the cut-off. The renormalized coordinate matrix will serve as a
+local descriptor that will feed into a specific deep neural network
+NN$^{\alpha_i}$ where $\alpha_i$ is the chemical type of atom $i$. The output
+of the neural network is the local atomic energy $\epsilon_i$ of the $i$th
+atom. Then, the PES is given by the sum of the local atomic energies
 
-The Renormalized Coordinate matrix will serve as a descriptor that will feed
-into the ML algorithm for the training.
+\begin{equation}
+    E = \sum_i^N	\epsilon_i
+\end{equation}
+
+while the atomic forces are
+
+\begin{equation}
+    \vec{F}_i = - \nabla_{\vec{R}_i} E = - \sum_i^N \nabla_{\vec{R}_i}
+    \epsilon_i
+\end{equation}
+
+The training is performed with the stochastic descent method, minimizing the
+loss function with respect to the weights of the deep neural network. The
+evaluation of the gradient is carried out using backpropagation algorithm,
+with the loss function defined as
+
+\begin{equation}
+    \mathcal{L} =   \frac{1}{M} \sum_l^M p_E \left(\hat{E}^l- E^l \right)^2 +
+    p_F
+    \abs{\hat{\vec{F}}^l- \vec{F}^l}^2
+\end{equation}
+
+where $M$ is the number of examples in the minibatch; $\hat{E}^l$ and
+$\hat{\vec{F}}^l$
+are the predicted energies and total forces; $E^l$ and $\vec{F}^l$ are the DFT
+energies
+and forces; and $p_E$, $p_F$ are tunable prefactors useful to improve the
+efficiency of the training.
