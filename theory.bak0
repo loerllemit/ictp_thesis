@@ -97,11 +97,11 @@ with $w_{0j}$ = $b_j$. There will be $n$ actual inputs to the neuron: from
 $x_1$ to $x_n$. The inputs will be weighted sum and the result is used as an
 argument of the threshold function or activation function $\varphi$. Once the
 function reaches a threshold value $\theta_j$ or more, it will give the output
-or activation $a_j$ of the  $j$th neuron. Mathematically,
+or activation $o_j$ of the
+$j$th neuron. Mathematically,
 
-\begin{equation} \label{eq:activation_funct}
-    a_j =   \varphi \left(\sum_{i=0}^{n} w_{ij}^T x_i \right) =  \varphi
-    \left( z_{j}\right)
+\begin{equation}
+    o_j =   \varphi \left(\sum_{i=0}^{n} w_{ij} x_i \right)
 \end{equation}
 
 Typical activation functions are Heaviside function, sigmoid, and rectified
@@ -166,112 +166,17 @@ where $L_i$ is the loss function of a specific training example $i$.
 
 The stochastic gradient descent does a good job in reducing the computational
 time, but the learning process can still be improved by implementing the
-backpropagation algorithm. The algorithm works by computing the gradient of
+back-propagation algorithm. The algorithm works by computing the gradient of
 the loss function with respect to each weights by utilizing chain rules in
 backward fashion, from last layer to the first.
 
-Without going to full derivation, the idea is to measure the sensitivity of the
-loss function  to variations in  parameters such as weights,
-biases and the activations.  For simplicity, consider the case of $N$ layers
-with one neuron each. For one training example,  the loss function will be
-$\mathcal{L}_0 = \left(a^{(N)} - y \right)^2$ where $a^{(N)}$ is the activation
-of the
-neuron at the last layer $N$ and $y$ is the actual value of the training
-example. From eqtn.~\eqref{eq:activation_funct}, the activation will depend on
-the previous layer
-
-\begin{align}
-    a^{(N)} & = \varphi \left( w^{(N)} a^{(N-1)} + b^{(N)} \right)
-    \Longrightarrow
-    \varphi
-    \left( z^{(N)} \right)
-\end{align}
-
-where $w^{(N)}$ and $b^{(N)}$ are the weights and biases of the $N$th layer.
-Taking relevant partial derivatives
-
-\begin{align}
-    \pdv{z^{(N)}}{w^{(N)}}       & = a^{(N-1)}, \quad \pdv{z^{(N)}}{b^{(N)}}
-    =1,
-    \quad \pdv{z^{(N)}}{a^{(N-1)}} = w^{(N)}                                 \\
-    \pdv{a^{(N)}}{z^{(N)}}       & = \varphi'
-    \left( z^{(N)} \right)                                                   \\
-    \pdv{\mathcal{L}_0}{a^{(N)}} & = 2 \left(a^{(N)} - y \right)
-\end{align}
-
-By Chain Rule,
-
-\begin{align}
-    \pdv{\mathcal{L}_0}{w^{(N)}}		      =
-    \pdv{\mathcal{L}_0}{a^{(N)}}
-    \pdv{a^{(N)}}{z^{(N)}} \pdv{z^{(N)}}{w^{(N)}}    & = 2 \left(a^{(N)} - y
-    \right)
-    \varphi'
-    \left( z^{(N)} \right)  a^{(N-1)}
-    \\
-    \pdv{\mathcal{L}_0}{a^{(N-1)}}		      =
-    \pdv{\mathcal{L}_0}{a^{(N)}}
-    \pdv{a^{(N)}}{z^{(N)}} \pdv{z^{(N)}}{a^{(N-1)} } & = 2 \left(a^{(N)} - y
-    \right)
-    \varphi'
-    \left( z^{(N)} \right)  w^{(N)}
-    \\
-    \pdv{\mathcal{L}_0}{b^{(N)}}		      =
-    \pdv{\mathcal{L}_0}{a^{(N)}}
-    \pdv{a^{(N)}}{z^{(N)}} \pdv{z^{(N)}}{b^{(N)}}    & = 2 \left(a^{(N)} - y
-    \right)
-    \varphi'
-    \left( z^{(N)} \right)
-\end{align}
-
-To generalize to more than one neurons per layer, one must introduce subscript
-so that $a^{(N)}_j$ denotes the activation of  $j$th neuron in the $N$th layer
-while $w^{(N)}_{jk}$ is the weight that connects the $j$th neuron in the $N$th
-layer and the $k$th neuron in the previous layer. Also, define $z^{(N)}_j =
-    \sum_k
-    w^{(N)}_{jk} a^{(N-1)}_k + b^{(N)}_j$. The chain rule is modified as
-follows
-
-\begin{align}
-    \pdv{\mathcal{L}_0}{w^{(N)}_{jk}} & =
-    \pdv{\mathcal{L}_0}{a^{(N)}_j}
-    \pdv{a^{(N)}_j}{z^{(N)}_j} \pdv{z^{(N)}_j}{w^{(N)}_{jk}}  =
-    \pdv{\mathcal{L}_0}{a^{(N)}_j}
-    \varphi'
-    \left( z^{(N)}_j \right)  a^{(N-1)}_k
-    \label{eq:back_prop1}
-    \\
-    \pdv{\mathcal{L}_0}{a^{(N-1)}_k}  & = \sum_{j=0}^{n_N-1}
-    \pdv{\mathcal{L}_0}{a^{(N)}_j}
-    \pdv{a^{(N)}_j}{z^{(N)}_j} \pdv{z^{(N)}_j}{a^{(N-1)}_k }  =
-    \sum_{j=0}^{n_N-1} \pdv{\mathcal{L}_0}{a^{(N)}_j}
-    \varphi'
-    \left( z^{(N)}_j \right)  w^{(N)}_{jk}
-    \label{eq:back_prop2}
-    \\
-    \pdv{\mathcal{L}_0}{b^{(N)}_j}    & =
-    \pdv{\mathcal{L}_0}{a^{(N)}_j}
-    \pdv{a^{(N)}_j}{z^{(N)}_j} \pdv{z^{(N)}_j}{b^{(N)}_j}     =
-    \pdv{\mathcal{L}_0}{a^{(N)}_j}
-    \varphi'
-    \left( z^{(N)}_j \right)
-\end{align}
-
-Eqtn.~\eqref{eq:back_prop1} can be rewritten by using
-eqtn.~\eqref{eq:back_prop2} for arbitrary layer $l$ as
-
-\begin{equation}
-    \pdv{\mathcal{L}_0}{w^{(l)}_{jk}} =  a^{(l-1)}_k \varphi'\left( z^{(l)}_j
-    \right) \sum_{j=0}^{n_{l+1}-1}
-    w^{(l+1)}_{jk} \varphi'
-    \left( z^{(l+1)}_j \right)	 \pdv{\mathcal{L}_0}{a^{(l+1)}_j}
-\end{equation}
-
-This equation is what called the backpropagation formula where it got its name
-since the error
-of the
-previous layer depends on the values of the forward layers. This formula
-estimates the gradient that goes into updating the weights.
+Without going to full derivation, the idea is to include all parameters that
+causes variation in the loss function. This includes changes in the weights,
+biases and the activations of the previous layer. Consider the case of a
+particular neuron
+$j$ in the $L$th layer. Neurons in $(L-1)$th layer with higher activation will
+be more sensitive
+to variation which implies weight is proportional to the ac
 
 % rephrase
 Deep learning continues to evolve rapidly, driven by advances in
@@ -332,6 +237,3 @@ where $s(r)$ is a smooth switching function defined as
 
 where $x = \frac{r- r_s}{r_c-r_s}$, $r_c$ is the cutoff radius and $r_s$ is the
 distance from atom $i$ where smoothing is applied.
-
-The Renormalized Coordinate matrix will serve as a descriptor that will feed
-into the ML algorithm for the training.

@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.15)  31 JUL 2024 14:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2024.3.15)  2 AUG 2024 17:58
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/loerl/ictp_diploma/main.tex
-(/home/loerl/ictp_diploma/main.tex
+**/home/loerl/ictp_thesis/main.tex
+(/home/loerl/ictp_thesis/main.tex
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2022-01-21> (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2021/10/04 v1.4n Standard LaTeX document class
@@ -27,7 +27,17 @@ File: size10.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
 Package: inputenc 2021/02/14 v1.3d Input encoding file
 \inpenc@prehook=\toks16
 \inpenc@posthook=\toks17
-) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks18
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2021/10/15 v2.17l AMS math features
 \@mathmargin=\skip49
 
@@ -36,7 +46,7 @@ For additional information on amsmath, use the `?' option.
 Package: amstext 2021/08/26 v2.01 AMS text
  (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks18
+\@emptytoks=\toks19
 \ex@=\dimen139
 )) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
@@ -64,28 +74,28 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
 \dotsspace@=\muskip16
 \c@parentequation=\count267
 \dspbrk@lvl=\count268
-\tag@help=\toks19
+\tag@help=\toks20
 \row@=\count269
 \column@=\count270
 \maxfields@=\count271
-\andhelp@=\toks20
+\andhelp@=\toks21
 \eqnshift@=\dimen142
 \alignsep@=\dimen143
 \tagshift@=\dimen144
 \tagwidth@=\dimen145
 \totwidth@=\dimen146
 \lineht@=\dimen147
-\@envbody=\toks21
+\@envbody=\toks22
 \multlinegap=\skip50
 \multlinetaggap=\skip51
-\mathdisplay@stack=\toks22
+\mathdisplay@stack=\toks23
 LaTeX Info: Redefining \[ on input line 2938.
 LaTeX Info: Redefining \] on input line 2939.
 ) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
  (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks23
+\KV@toks@=\toks24
 ) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
  (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
@@ -140,7 +150,7 @@ Package: iftex 2020/03/06 v1.0d TeX engine tests
 \Gm@layoutheight=\dimen162
 \Gm@layouthoffset=\dimen163
 \Gm@layoutvoffset=\dimen164
-\Gm@dimlist=\toks24
+\Gm@dimlist=\toks25
 ) (/usr/share/texlive/texmf-dist/tex/latex/mwe/mwe.sty
 Package: mwe 2018/03/30 v0.5 Package to support minimal working examples (MWE)
  (/usr/share/texlive/texmf-dist/tex/latex/lipsum/lipsum.sty (/usr/share/texlive/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
@@ -182,12 +192,13 @@ Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 )) (/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count303
-\float@exts=\toks25
+\float@exts=\toks26
 \float@box=\box53
-\@float@everytoks=\toks26
+\@float@everytoks=\toks27
 \@floatcapt=\box54
 ) (/usr/share/texlive/texmf-dist/tex/latex/bbold/bbold.sty
 Package: bbold 1994/04/06 Bbold symbol package
+LaTeX Font Info:    Redeclaring math alphabet \mathbb on input line 42.
 ) (/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty
 Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
 \OuterFrameSep=\skip52
@@ -369,7 +380,7 @@ Package: array 2021/10/04 v2.5f Tabular extension package (FMi)
 \col@sep=\dimen182
 \ar@mcellbox=\box63
 \extrarowheight=\dimen183
-\NC@list=\toks27
+\NC@list=\toks28
 \extratabsurround=\skip54
 \backup@length=\skip55
 \ar@cellbox=\box64
@@ -605,30 +616,30 @@ Package biblatex Info: ... and expl3
 Package: blx-case-expl3 2022/02/02 v3.17 expl3 case changing code for biblatex
 ))
 \c@theorem=\count454
-Package translations Info: No language package found. I am going to use `english' as default language. on input line 36.
+Package translations Info: No language package found. I am going to use `english' as default language. on input line 37.
 \@quotelevel=\count455
 \@quotereset=\count456
- (./main.aux (./intro.aux) (./methods.aux) (./theory.aux) (./rnd.aux) (./conclusion.aux))
+ (./main.aux (./intro.aux) (./theory.aux) (./methods.aux) (./conclusion.aux))
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
  (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count457
@@ -636,12 +647,12 @@ LaTeX Font Info:    ... okay on input line 36.
 \scratchbox=\box65
 \nofMPsegments=\count458
 \nofMParguments=\count459
-\everyMPshowfont=\toks28
+\everyMPshowfont=\toks29
 \MPscratchCnt=\count460
 \MPscratchDim=\dimen185
 \MPnumerator=\count461
 \makeMPintoPDFobject=\count462
-\everyMPtoPDFconversion=\toks29
+\everyMPtoPDFconversion=\toks30
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -708,7 +719,7 @@ Package: ragged2e 2021/12/15 v3.1 ragged2e Package
 \RaggedRightParindent=\skip90
 \JustifyingParindent=\skip91
 )
-Package hyperref Info: Link coloring OFF on input line 36.
+Package hyperref Info: Link coloring OFF on input line 37.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
  (/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
@@ -718,9 +729,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count463
 )
-LaTeX Info: Redefining \ref on input line 36.
-LaTeX Info: Redefining \pageref on input line 36.
-LaTeX Info: Redefining \nameref on input line 36.
+LaTeX Info: Redefining \ref on input line 37.
+LaTeX Info: Redefining \pageref on input line 37.
+LaTeX Info: Redefining \nameref on input line 37.
  (./main.out) (./main.out)
 \@outlinefile=\write4
 \openout4 = `main.out'.
@@ -734,7 +745,7 @@ Package color Info: Driver file: pdftex.def on input line 149.
 ) (/usr/share/texlive/texmf-dist/tex/latex/translations/translations-basic-dictionary-english.trsl
 File: translations-basic-dictionary-english.trsl (english translation file `translations-basic-dictionary')
 )
-Package translations Info: loading dictionary `translations-basic-dictionary' for `english'. on input line 36.
+Package translations Info: loading dictionary `translations-basic-dictionary' for `english'. on input line 37.
 Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
  (/usr/share/texlive/texmf-dist/tex/latex/biblatex/lbx/english.lbx
@@ -748,9 +759,16 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'main.bbl' found.
  (./main.bbl)
-Package biblatex Info: Reference section=0 on input line 36.
-Package biblatex Info: Reference segment=0 on input line 36.
- [1
+Package biblatex Info: Reference section=0 on input line 37.
+Package biblatex Info: Reference segment=0 on input line 37.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 40.
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 40.
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./main.toc)
 \tf@toc=\write5
@@ -759,7 +777,7 @@ Package biblatex Info: Reference segment=0 on input line 36.
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.45 \include{intro}
+l.46 \include{intro}
                      [1
 
 ]
@@ -771,160 +789,79 @@ Chapter 1.
 
 
 ]
-\openout2 = `methods.aux'.
-
- (./methods.tex
-Chapter 2.
-<images//bulk.png, id=54, 389.20406pt x 275.52937pt>
-File: images//bulk.png Graphic file (type png)
-<use images//bulk.png>
-Package pdftex.def Info: images//bulk.png  used on input line 8.
-(pdftex.def)             Requested size: 136.57166pt x 96.68477pt.
-<images//interface.png, id=56, 271.0125pt x 307.1475pt>
-File: images//interface.png Graphic file (type png)
-<use images//interface.png>
-Package pdftex.def Info: images//interface.png  used on input line 15.
-(pdftex.def)             Requested size: 119.49922pt x 135.4312pt.
-[3
-
-
-
-
- <./images//bulk.png> <./images//interface.png>]) [4]
 \openout2 = `theory.aux'.
 
  (./theory.tex
-Chapter 3.
-) [5
+Chapter 2.
+LaTeX Font Info:    Trying to load font information for U+euf on input line 48.
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/ueuf.fd
+File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
+) [3
 
 
 
 
 ]
-\openout2 = `rnd.aux'.
+<images/DL.png, id=60, 595.47469pt x 292.09125pt>
+File: images/DL.png Graphic file (type png)
+<use images/DL.png>
+Package pdftex.def Info: images/DL.png  used on input line 84.
+(pdftex.def)             Requested size: 213.39566pt x 104.6714pt.
+<images/artificial_neuron.pdf, id=63, 614.295pt x 301.125pt>
+File: images/artificial_neuron.pdf Graphic file (type pdf)
+<use images/artificial_neuron.pdf>
+Package pdftex.def Info: images/artificial_neuron.pdf  used on input line 112.
+(pdftex.def)             Requested size: 213.39566pt x 104.60501pt.
+ [4 <./images/DL.png> <./images/artificial_neuron.pdf>] [5] [6]) [7]
+\openout2 = `methods.aux'.
 
- (./rnd.tex
-Chapter 4.
-<images/convergence/conv-energy.png, id=105, 410.13225pt x 312.08595pt>
-File: images/convergence/conv-energy.png Graphic file (type png)
-<use images/convergence/conv-energy.png>
-Package pdftex.def Info: images/convergence/conv-energy.png  used on input line 6.
-(pdftex.def)             Requested size: 213.39566pt x 162.38086pt.
-<images/convergence/conv-force.png, id=106, 422.5386pt x 312.08595pt>
-File: images/convergence/conv-force.png Graphic file (type png)
-<use images/convergence/conv-force.png>
-Package pdftex.def Info: images/convergence/conv-force.png  used on input line 12.
-(pdftex.def)             Requested size: 213.39566pt x 157.61406pt.
-<images/convergence/conv-pressure.png, id=107, 406.51875pt x 312.08595pt>
-File: images/convergence/conv-pressure.png Graphic file (type png)
-<use images/convergence/conv-pressure.png>
-Package pdftex.def Info: images/convergence/conv-pressure.png  used on input line 18.
-(pdftex.def)             Requested size: 213.39566pt x 163.82376pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<images/density.png, id=108, 417.11835pt x 338.2236pt>
-File: images/density.png Graphic file (type png)
-<use images/density.png>
-Package pdftex.def Info: images/density.png  used on input line 25.
-(pdftex.def)             Requested size: 213.39566pt x 173.03365pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<images/330K/conv-lattice.png, id=109, 429.0429pt x 316.90395pt>
-File: images/330K/conv-lattice.png Graphic file (type png)
-<use images/330K/conv-lattice.png>
-Package pdftex.def Info: images/330K/conv-lattice.png  used on input line 31.
-(pdftex.def)             Requested size: 170.71393pt x 126.09685pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<images/dipole_dist.png, id=110, 429.2838pt x 323.7696pt>
-File: images/dipole_dist.png Graphic file (type png)
-<use images/dipole_dist.png>
-Package pdftex.def Info: images/dipole_dist.png  used on input line 37.
-(pdftex.def)             Requested size: 213.39566pt x 160.9408pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<images/surface_tension.png, id=111, 408.3255pt x 312.08595pt>
-File: images/surface_tension.png Graphic file (type png)
-<use images/surface_tension.png>
-Package pdftex.def Info: images/surface_tension.png  used on input line 43.
-(pdftex.def)             Requested size: 213.39566pt x 163.09993pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<images/force_correlation.png, id=112, 410.61404pt x 316.3017pt>
-File: images/force_correlation.png Graphic file (type png)
-<use images/force_correlation.png>
-Package pdftex.def Info: images/force_correlation.png  used on input line 49.
-(pdftex.def)             Requested size: 213.39566pt x 164.38129pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[6
+ (./methods.tex
+Chapter 3.
+<images//bulk.png, id=158, 389.20406pt x 275.52937pt>
+File: images//bulk.png Graphic file (type png)
+<use images//bulk.png>
+Package pdftex.def Info: images//bulk.png  used on input line 8.
+(pdftex.def)             Requested size: 136.57166pt x 96.68477pt.
+<images//interface.png, id=159, 271.0125pt x 307.1475pt>
+File: images//interface.png Graphic file (type png)
+<use images//interface.png>
+Package pdftex.def Info: images//interface.png  used on input line 15.
+(pdftex.def)             Requested size: 119.49922pt x 135.4312pt.
+[8
 
 
 
 
- <./images/convergence/conv-energy.png> <./images/convergence/conv-force.png>] [7 <./images/convergence/conv-pressure.png> <./images/density.png> <./images/330K/conv-lattice.png> <./images/dipole_dist.png>] [8 <./images/surface_tension.png> <./images/force_correlation.png>]
-<images/scan_vs_r2scan/r2scan_hist_force.png, id=142, 420.25005pt x 314.49495pt>
-File: images/scan_vs_r2scan/r2scan_hist_force.png Graphic file (type png)
-<use images/scan_vs_r2scan/r2scan_hist_force.png>
-Package pdftex.def Info: images/scan_vs_r2scan/r2scan_hist_force.png  used on input line 58.
-(pdftex.def)             Requested size: 213.39566pt x 159.69926pt.
-<images/scan_vs_r2scan/energy_compare.png, id=143, 433.98135pt x 331.83975pt>
-File: images/scan_vs_r2scan/energy_compare.png Graphic file (type png)
-<use images/scan_vs_r2scan/energy_compare.png>
-Package pdftex.def Info: images/scan_vs_r2scan/energy_compare.png  used on input line 64.
-(pdftex.def)             Requested size: 213.39566pt x 163.17506pt.
-<images/scan_vs_r2scan/force_compare.png, id=144, 409.7709pt x 333.1647pt>
-File: images/scan_vs_r2scan/force_compare.png Graphic file (type png)
-<use images/scan_vs_r2scan/force_compare.png>
-Package pdftex.def Info: images/scan_vs_r2scan/force_compare.png  used on input line 70.
-(pdftex.def)             Requested size: 213.39566pt x 173.50082pt.
-<images/scan_vs_r2scan/pressure_compare.png, id=145, 1065.9825pt x 364.9635pt>
-File: images/scan_vs_r2scan/pressure_compare.png Graphic file (type png)
-<use images/scan_vs_r2scan/pressure_compare.png>
-Package pdftex.def Info: images/scan_vs_r2scan/pressure_compare.png  used on input line 76.
-(pdftex.def)             Requested size: 341.43436pt x 116.8965pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-) [9
-
- <./images/scan_vs_r2scan/r2scan_hist_force.png> <./images/scan_vs_r2scan/energy_compare.png> <./images/scan_vs_r2scan/force_compare.png>] [10 <./images/scan_vs_r2scan/pressure_compare.png>]
+ <./images//bulk.png> <./images//interface.png>]) [9]
 \openout2 = `conclusion.aux'.
 
- (./conclusion.tex) [11
+ (./conclusion.tex) [10
 
 
 
 
 
 
-] [12] (./main.aux (./intro.aux) (./methods.aux) (./theory.aux) (./rnd.aux) (./conclusion.aux))
+] [11] (./main.aux (./intro.aux) (./theory.aux) (./methods.aux) (./conclusion.aux))
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 27E7A19C177A9018B66A2480B5111751;710.
+(rerunfilecheck)             Checksum: E588CAFAA3F4FD63DC53C9209585132D;784.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 25377 strings out of 478287
- 503593 string characters out of 5849289
- 1269807 words of memory out of 5000000
- 43201 multiletter control sequences out of 15000+600000
- 476981 words of font info for 55 fonts, out of 8000000 for 9000
+ 25862 strings out of 478287
+ 507549 string characters out of 5849289
+ 1282130 words of memory out of 5000000
+ 43664 multiletter control sequences out of 15000+600000
+ 482780 words of font info for 79 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 83i,8n,91p,1136b,1766s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on main.pdf (13 pages, 2693912 bytes).
+ 83i,12n,91p,1135b,1766s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb>
+Output written on main.pdf (12 pages, 697376 bytes).
 PDF statistics:
- 270 PDF objects out of 1000 (max. 8388607)
- 191 compressed objects within 2 object streams
- 50 named destinations out of 1000 (max. 500000)
- 119 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 326 PDF objects out of 1000 (max. 8388607)
+ 246 compressed objects within 3 object streams
+ 60 named destinations out of 1000 (max. 500000)
+ 69 words of extra memory for PDF output out of 10000 (max. 10000000)
 
