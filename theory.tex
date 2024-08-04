@@ -228,7 +228,7 @@ By Chain Rule,
 To generalize to more than one neurons per layer, one must introduce subscript
 so that $a^{(N)}_j$ denotes the activation of  $j$th neuron in the $N$th layer
 while $w^{(N)}_{jk}$ is the weight that connects the $j$th neuron in the $N$th
-layer and the $k$th neuron in the previous layer. Also, define $z^{(N)}_j =
+layer with the $k$th neuron in the previous layer. Also, define $z^{(N)}_j =
     \sum_k
     w^{(N)}_{jk} a^{(N-1)}_k + b^{(N)}_j$. The chain rule is modified as
 follows
@@ -390,20 +390,30 @@ while the atomic forces are
     \epsilon_i
 \end{equation}
 
+and the components of stress tensor is defined as
+
+\begin{equation}
+    \Xi_{\alpha \beta} = \sum_i^N R_{i\alpha} F_{i\beta}
+\end{equation}
+
 The training is performed with the stochastic descent method, minimizing the
 loss function with respect to the weights of the deep neural network. The
 evaluation of the gradient is carried out using backpropagation algorithm,
 with the loss function defined as
 
 \begin{equation}
-    \mathcal{L} =   \frac{1}{M} \sum_l^M p_E \left(\hat{E}^l- E^l \right)^2 +
-    p_F
-    \abs{\hat{\vec{F}}^l- \vec{F}^l}^2
+    \mathcal{L} =   \frac{1}{M} \sum_l^M  \left[  p_E \left(\hat{E}^l- E^l
+        \right)^2 +
+        p_F \abs{\hat{\vec{F}}^l- \vec{F}^l}^2 + p_V \left(\hat{\Xi}^l- \Xi^l
+        \right)^2 \right]
 \end{equation}
 
-where $M$ is the number of examples in the minibatch; $\hat{E}^l$ and
-$\hat{\vec{F}}^l$
-are the predicted energies and total forces; $E^l$ and $\vec{F}^l$ are the DFT
-energies
-and forces; and $p_E$, $p_F$ are tunable prefactors useful to improve the
+where $M$ is the number of examples in the minibatch; $\hat{E}^l$,
+$\hat{\vec{F}}^l$, and $\hat{\Xi}^l$
+are the predicted energies, total forces, and stress tensor; $E^l$,
+$\vec{F}^l$, and $\Xi^l$ are
+the DFT
+energies, forces, and stress tensor; $p_E$, $p_F$, and $p_V$  are tunable
+prefactors
+useful to improve the
 efficiency of the training.
