@@ -19,7 +19,7 @@ observed when applying SCAN for systems with interfaces. Instead, this study
 used an accurate and numerically efficient regularized-restored r$^2$SCAN
 meta-generalized gradient
 approximation \cite{Furness2020}. r$^2$SCAN functional satisﬁes the most
-important exact constraints but with more consistent error with grid density,
+important exact constraints but with more consistent error in grid density,
 requiring smaller
 grids to
 achieve good accuracy.
@@ -129,9 +129,9 @@ mostly overestimated. In contrast, Figure~\ref{fig:corr_bulk+interface_NN}
 shows good agreement across all parameters for a neural network potential
 trained on bulk and interface environments.
 
-\begin{figure}[tbhp]
+\begin{figure}[tbhp!]
   \centering
-  \begin{subfigure}{0.48\textwidth}
+  \begin{subfigure}{0.47\textwidth}
     \centering
 
     \includegraphics[width=0.9\textwidth]{images/bulk_NN_on_interface/2_e_peratom.png}
@@ -139,7 +139,7 @@ trained on bulk and interface environments.
     \label{fig:corr_bulk_NN_E}
   \end{subfigure}
   \hfill
-  \begin{subfigure}{0.48\textwidth}
+  \begin{subfigure}{0.47\textwidth}
     \centering
 
     \includegraphics[width=0.9\textwidth]{images/bulk_NN_on_interface/2_force.png}
@@ -160,9 +160,9 @@ trained on bulk and interface environments.
   \label{fig:corr_bulk_NN}
 \end{figure}
 
-\begin{figure}[tbhp]
+\begin{figure}[tbhp!]
   \centering
-  \begin{subfigure}{0.48\textwidth}
+  \begin{subfigure}{0.47\textwidth}
     \centering
 
     \includegraphics[width=0.9\textwidth]{images/bulk+interface_NN_on_interface/2_e_peratom.png}
@@ -170,7 +170,7 @@ trained on bulk and interface environments.
     \label{fig:corr_bulk+interface_NN_E}
   \end{subfigure}
   \hfill
-  \begin{subfigure}{0.48\textwidth}
+  \begin{subfigure}{0.47\textwidth}
     \centering
 
     \includegraphics[width=0.9\textwidth]{images/bulk+interface_NN_on_interface/2_force.png}
@@ -193,10 +193,18 @@ trained on bulk and interface environments.
 \end{figure}
 
 \section{Density}
-
-\begin{figure}[h!]
+Figure~\ref{fig:density} shows the mass density of 192 water molecules at 330 K
+for different deep neural network models. DNN model trained on bulk
+environments has bulk
+density that is underestimated from the experimental value of 1 \unit{
+  g/cm^3}. On the other hand, the reference model from the work of
+Sanchez-Burgos et
+al.~\cite{sanchez2023deep}  overestimated the bulk density. Meanwhile,
+the DNN model trained on  bulk and interface systems  represents the
+bulk density of water accurately. On the other hand,
+\begin{figure}[tbhp!]
   \centering
-  \includegraphics[width=0.7\linewidth]{images/density_330.png}
+  \includegraphics[width=0.65\linewidth]{images/density_330.png}
   \caption{Mass Density Profile at 330 K for different deep neural network
     models. The reference model is based on trained model of Sanchez-Burgos et
     al.~\cite{sanchez2023deep}. }
@@ -204,24 +212,33 @@ trained on bulk and interface environments.
 \end{figure}
 
 \section{Surface Tension}
+Surface tension was calculated according to formula in eqtn.
+\eqref{eq:surf_tens}. Figure~\ref{fig:surf_tens} shows the plot of the surface
+tension as a function of temperature for different NN models. The reference
+model is more accurate even though the model was trained on only bulk
+environments. Nevertheless, the NN model trained on bulk and interface systems
+is closer to the reference and give better results at higher temperatures. On
+other hand, the bulk-only trained NN has very poor results that is greatly
+underestimated. This implies that interface defects play a role in predicting
+the interfacial
+properties such as surface tension.
+
 \begin{figure}[h!]
   \centering
   \includegraphics[width=0.7\linewidth]{images/surface_tension.png}
-  \caption{Surface Tension}
+  \caption{Surface tension vs. temperature for different NN models. The
+    reference model is based on trained model of Sanchez-Burgos et
+    al.~\cite{sanchez2023deep}.  }
+  \label{fig:surf_tens}
 \end{figure}
+
+\section{Dipole Orientation}
 \begin{figure}[h!]
   \centering
   \includegraphics[width=0.5\linewidth]{images/dipole_dist.png}
   \caption{Dipole Orientation}
 \end{figure}
 
-\begin{figure}[h!]
-  \centering
-  \includegraphics[width=0.5\linewidth]{images/force_correlation.png}
-  \caption{Correlation between the predicted and reference data}
-\end{figure}
-
-\section{Dipole Orientation}
 \section{Model Deviation}
 
 \clearpage
