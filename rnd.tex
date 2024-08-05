@@ -233,12 +233,34 @@ properties such as surface tension.
 \end{figure}
 
 \section{Dipole Orientation}
-\begin{figure}[h!]
+The distribution of average dipole moment orientation was calculated along the
+direction
+normal to the surface. Specifically, the $\cos(\theta)$ was computed where
+$\theta$ is
+the angle between the dipole and the outward normal vector of the surface.
+Positive values correspond to alignment of the dipole with the outward normal
+vector. The result is shown in Figure~\ref{fig:dipole_orient} for different NN
+models. The DNN model trained with bulk and surface environments have an
+opposite dipole
+orientation compared to models that were trained on bulk only. However, it is
+expected that for an electrically neutral surface, the average solvent dipole
+orientation is oriented slightly towards the surface (the oxygen pointing
+towards the
+bulk region) \cite{WalkerGibbons2022,Kubincova2020}. In addition, it can be
+observed that the bulk region inside is not well defined because it is expected
+that
+the net dipole moment must be zero due to random thermal reorientation of water
+molecules
+inside the bulk.
+\begin{figure}[tbhp!]
   \centering
-  \includegraphics[width=0.5\linewidth]{images/dipole_dist.png}
-  \caption{Dipole Orientation}
+  \includegraphics[width=0.75\linewidth]{images/dipole_dist_new.png}
+  \caption{Dipole Orientation for different NN models. The vertical lines are
+    the Gibbs Dividing Surface in which the density is half of the bulk value.
+  }
+  \label{fig:dipole_orient}
 \end{figure}
 
-\section{Model Deviation}
+% \section{Model Deviation}
 
 \clearpage
