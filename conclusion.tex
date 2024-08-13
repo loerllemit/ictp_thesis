@@ -2,18 +2,9 @@
 
 In this thesis, we generated a deep neural network potential and assess its
 predictability in obtaining relevant system properties such as density, surface
-tension, and dipole orientation. Neural network potential trained on only bulk
+tension, and dipole orientation. Due to numerical instabilities using SCAN functional for interfaces, we used instead  similar  but accurate and numerically efficient regularized-restored r$^2$SCAN functional. Neural network potential trained on only bulk
 systems did not perform well when used on trajectories containing interfaces.
 Specifically, it predicted very underestimated values of surface tension and
-slightly underestimated bulk density. Adding surface dataset to the training
-did improve the prediction of surface tension, implying that surface defects
-play a role in surface properties of water.
-
-This thesis was only conducted at smaller system size of 192 water molecules,
-and finite size effects might masked the actual results. Hence, it is
-recommended to do MD simulations at larger system size as to decouple
-fluctuations that happens in the bulk and interface regions.
-
-It is interesting to see what happens to relevant system's properties such as
-surface tension when long range interactions are taken into account during
-the training of neural network potentials.
+slightly underestimated bulk density. Adding interface dataset to the training
+did improve the prediction of mass density and surface tension, implying that surface defects
+play a role in surface properties of water. In addition, the bulk+interface trained NNP have the same accuracy as the reference NNP used but with less training dataset. In all the models, they fail to describe microscopic properties such as dipole orientation at the surface but still obtain good macroscopic properties. This begs the question whether it is due to finite size effects or rather different physics must be include during the training such as long-range electrostatic interactions.
