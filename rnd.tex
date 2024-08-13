@@ -227,6 +227,8 @@ in Figure~\ref{fig:corr_F}.
 	\label{fig:corr_E}
 \end{figure}
 
+\clearpage
+
 \begin{figure}[tbhp!]
 	\centering
 	\begin{subfigure}{0.47\textwidth}
@@ -255,15 +257,25 @@ in Figure~\ref{fig:corr_F}.
 \end{figure}
 
 \section{Mass Density}
+For all MD simulations, the temperature was set at ambient temperature of 300
+K. To account the shift of melting temperature of ice when using SCAN
+functional,
+a shift of +30 K was applied so that 330 K refers to the new ambient
+temperature \cite{piaggi2021phase}.
+
 Figure~\ref{fig:density} shows the mass density of 192 water molecules at 330 K
 for different deep neural network models. DNN model trained on bulk
 environments has bulk
 density that is underestimated from the experimental value of 1 \unit{
 	g/cm^3}. On the other hand, the reference model from the work of
 Sanchez-Burgos et
-al.~\cite{sanchez2023deep}  overestimated the bulk density. Meanwhile,
+al.~\cite{sanchez2023deep}  overestimated the bulk density. Note that the
+reference model was trained on bulk only environments and using SCAN
+functional. Meanwhile,
 the DNN model trained on  bulk and interface systems  represents the
-bulk density of water accurately.
+bulk density of water accurately. In addition, this model also describes
+the bulk region accurately since the density fluctuations are minimized in
+comparison to the former models.
 \begin{figure}[tbhp!]
 	\centering
 	\includegraphics[width=0.65\linewidth]{images/density_330.png}
@@ -277,20 +289,33 @@ bulk density of water accurately.
 
 \section{Surface Tension}
 Surface tension was calculated according to formula in eqtn.
-\eqref{eq:surf_tens}. Figure~\ref{fig:surf_tens} shows the plot of the surface
-tension as a function of temperature for different NN models. The reference
-model is more accurate even though the model was trained on only bulk
-environments. Nevertheless, the NN model trained on bulk and interface systems
-is closer to the reference and give better results at higher temperatures. On
-other hand, the bulk-only trained NN has very poor results that is greatly
-underestimated. This implies that surface defects play a role in predicting
-the interfacial
-properties such as surface tension.
+\eqref{eq:surf_tens}. It is expected that for a bulk system, this equation will
+give zero since there is isotropy of pressure in all directions. However, for
+systems with interfaces, there will be a broken symmetry along the direction
+normal to the surface, which will effectively get nonzero surface tension.
+
+Figure~\ref{fig:surf_tens} shows the plot of the surface
+tension as a function of temperature for different NNP models. The bulk-only
+trained NNP model has very poor results that is greatly underestimated and
+starts to plateaus at above 400 K. Meanwhile, the bulk+interface trained NNP
+model
+improved the surface
+tension much better than  bulk-only trained NNP model, and gets much better at
+higher
+temperature. This result supports the idea that surface defects play a role in
+predicting
+the interfacial properties such as surface tension. The reference
+model is more accurate even though the model was trained on  bulk only
+environments. However, the reference model was trained for a very large
+training dataset that includes both ice and liquid phases and vast
+thermodynamic range up to 2000 K and 50 GPa \cite{zhang2021phase}. However, our
+bulk+interface trained NNP model was trained on thermodynamic range up to 600 K
+and 1 GPa, and still give comparable accuracy as the reference model.
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{images/surface_tension.png}
-	\caption{Surface tension vs. temperature for different NN models. The
+	\caption{Surface tension for different NNP models. The
 		reference model is based on trained model of Sanchez-Burgos et
 		al.~\cite{sanchez2023deep}.  }
 	\label{fig:surf_tens}
