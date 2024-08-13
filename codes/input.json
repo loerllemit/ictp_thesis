@@ -1,0 +1,70 @@
+{
+  "_comment": " model parameters",
+  "model": {
+    "type_map": ["O", "H"],
+    "descriptor": {
+      "type": "se_e2_a",
+      "sel": [60, 110],
+      "rcut_smth": 0.5,
+      "rcut": 6.0,
+      "neuron": [25, 50, 100],
+      "resnet_dt": false,
+      "axis_neuron": 16,
+      "precision": "float64",
+      "seed": 101
+    },
+    "fitting_net": {
+      "neuron": [250, 250, 250],
+      "resnet_dt": true,
+      "precision": "float64",
+      "seed": 102,
+      "_comment": " "
+    }
+  },
+
+  "learning_rate": {
+    "type": "exp",
+    "decay_steps": 5000,
+    "start_lr": 0.001,
+    "stop_lr": 3.5e-8
+  },
+
+  "loss": {
+    "type": "ener",
+    "start_pref_e": 0.02,
+    "limit_pref_e": 1,
+    "start_pref_f": 1000,
+    "limit_pref_f": 1,
+    "start_pref_v": 0,
+    "limit_pref_v": 0
+  },
+
+  "training": {
+    "training_data": {
+      "systems": [
+        "../../../interface/orig_1000/training_data",
+        "../../../bulk/orig_1200/training_data",
+        "../../../bulk/iter.0/training_data",
+        "../../../bulk/iter.1/training_data",
+        "../../../bulk/iter.2/training_data",
+        "../../../bulk/iter.3/training_data",
+        "../../../bulk/iter.4/training_data",
+        "../../../bulk/iter.5/training_data"
+      ],
+      "batch_size": "auto"
+    },
+    "validation_data": {
+      "systems": [
+        "../../../interface/orig_1000/validation_data",
+        "../../../bulk/orig_1200/validation_data"
+      ],
+      "batch_size": 1,
+      "numb_btch": 3
+    },
+    "numb_steps": 3000000,
+    "seed": 103,
+    "disp_file": "lcurve.out",
+    "disp_freq": 100,
+    "save_freq": 1000
+  }
+}

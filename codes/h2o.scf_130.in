@@ -1,0 +1,57 @@
+&CONTROL
+   calculation      = 'scf'
+   restart_mode     = 'from_scratch'
+   tstress          = .true.
+   tprnfor          = .true.
+   outdir           = './tmp'
+   prefix           = 'h2o'
+   disk_io          = 'none'
+   pseudo_dir       = './pseudo'
+/
+&SYSTEM
+   ecutwfc          = 130.0
+   input_dft        = 'R2SCAN'
+   ntyp             = 2
+   nat              = 576
+   ibrav            = 0
+/
+&ELECTRONS
+   electron_maxstep = 200
+   mixing_mode      = 'plain'
+   mixing_beta      = 0.55
+   mixing_ndim      = 8
+   diagonalization  = 'david'
+   diago_david_ndim = 4
+   startingpot      = 'file'
+   startingwfc      = 'file'
+/
+&IONS
+/
+&CELL
+/
+ATOMIC_SPECIES
+O 15.999 O_ONCV_PBE-1.2.upf
+H 1.008 H_ONCV_PBE-1.2.upf
+
+K_POINTS gamma
+
+CELL_PARAMETERS angstrom
+17.94279619020740 0.00000000000000 0.00000000000000
+0.00000000000000 17.94279619020740 0.00000000000000
+0.00000000000000 0.00000000000000 50.00000000000000
+
+ATOMIC_POSITIONS angstrom
+O 8.4619700000 3.4587900000 32.4062000000  
+H 10.6908000000 7.3063900000 31.7633000000  
+H 4.2189500000 7.4575800000 22.5522000000  
+H 4.0646900000 9.3911700000 15.5767000000  
+H 10.0488000000 9.7699600000 33.4978000000  
+H 8.9086700000 7.4248700000 20.6158000000  
+H 8.0831200000 5.8813100000 25.9671000000  
+H 10.5285000000 6.5861200000 32.9793000000  
+O 8.1907600000 10.8529000000 31.1690000000  
+O 9.0796900000 5.4977900000 33.9235000000  
+H 15.2163000000 12.5778000000 23.2222000000  
+H 16.7107000000 15.0185000000 31.2870000000  
+H 17.9338000000 14.8244000000 26.2728000000  
+...........

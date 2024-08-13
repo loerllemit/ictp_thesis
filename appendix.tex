@@ -44,7 +44,8 @@
     \label{fig:conv_scan}
 \end{figure}
 
-\begin{figure}[tbhp]
+
+\begin{figure}[!tbhp]
     \centering
     \begin{subfigure}{0.32\textwidth}
         \centering
@@ -75,8 +76,27 @@
     \label{fig:conv_r2scan}
 \end{figure}
 
-% \begin{figure}[h!]
-%     \centering
-%     \includegraphics[width=0.4\linewidth]{images/330K/conv-lattice.png}
-%     \caption{Lattice parameter as a function of simulation steps. }
-% \end{figure}
+\clearpage
+
+\section*{Sample Codes}
+\usemintedstyle{stata-light}
+\begin{listing}[!ht]
+    \caption{Quantum Espresso input file}
+    \inputminted[linenos,frame=leftline,fontsize=\footnotesize,
+        breakanywhere,breaklines
+    ]{fortran}{./codes/h2o.scf_130.in}
+\end{listing}
+
+\begin{listing}[!ht]
+    \caption{DeePMD-kit input file}
+    \inputminted[linenos,frame=leftline,fontsize=\footnotesize,
+        breakanywhere,breaklines
+    ]{json}{./codes/input.json}
+\end{listing}
+
+\begin{listing}[!ht ]
+    \caption{LAMMPS input file}
+    \inputminted[linenos,frame=leftline,fontsize=\footnotesize,
+        breakanywhere,breaklines
+    ]{bash}{./codes/in.lammps}
+\end{listing}

@@ -1,0 +1,52 @@
+units metal       
+atom_style atomic
+processors 2 2 1 grid onelevel
+read_data   ./192mol_interface_scaled.lmp  
+
+variable temp_idx   equal 300.0
+variable seed_idx   equal 300
+variable dump_rate  equal 2000
+variable models_dir string "/data/training/bulk+interface/iter.0.1"
+
+pair_style	deepmd  ${models_dir}/model.01/graph.pb  ${models_dir}/model.02/graph.pb  ${models_dir}/model.03/graph.pb  ${models_dir}/model.04/graph.pb out_file md.out out_freq ${dump_rate}
+pair_coeff * * 
+
+mass 		1 16
+mass		2 1
+
+neighbor        2.0 bin
+neigh_modify    every 10 delay 0 check no
+
+timestep        0.0002
+thermo_style    custom step time pe ke etotal temp press vol density
+thermo          ${dump_rate}
+
+velocity        all create ${temp_idx} ${seed_idx}
+
+restart         1000000  restart_step.*
+timer           timeout 30:55:00 every 10000
+
+variable time equal step*dt
+variable epress equal c_thermo_press
+variable s1 equal c_thermo_press[1]
+variable s2 equal c_thermo_press[2]
+variable s3 equal c_thermo_press[3]
+variable s4 equal c_thermo_press[4]
+variable s5 equal c_thermo_press[5]
+variable s6 equal c_thermo_press[6]
+
+fix             1 all nvt temp ${temp_idx} ${temp_idx} $(100.0*dt) 
+run             10000000
+unfix 1
+
+fix press_print all print ${dump_rate} "$(step) ${time} ${epress} ${s1} ${s2} ${s3} ${s4} ${s5} ${s6}" append pressure.out screen "no" title "step time press pxx pyy pzz pxy pxz pyz"
+
+dump		1 all custom ${dump_rate} water.dump.sample id type x y z 
+dump_modify	1 sort id append yes pbc yes
+
+fix             1 all nvt temp ${temp_idx} ${temp_idx} $(100.0*dt) 
+run             50000000
+unfix 1
+
+write_restart   restart.inter
+write_data   	water.data.inter
