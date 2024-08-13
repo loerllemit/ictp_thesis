@@ -48,7 +48,9 @@ forces was
 validation
 errors
 on ML models. See Figure~\ref{fig:scan_r2scan_F_dist} for the distribution
-plot of the error in forces.  Convergence tests were conducted
+plot of the error in forces. For the pressure tensor, it is
+underestimated for r$^2$SCAN functional with respect to the SCAN functional as
+verified in  Figure~\ref{fig:scan_r2scan_P}. Convergence tests were conducted
 to determine the appropriate
 energy cut-offs for the DFT calculations. As shown in
 Figures~\ref{fig:conv_scan} and \ref{fig:conv_r2scan}, a  cutoff of 130 Ry  is

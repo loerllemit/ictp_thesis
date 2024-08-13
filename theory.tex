@@ -268,7 +268,7 @@ eqtn.~\eqref{eq:back_prop2} for arbitrary layer $l$ as
     \left( z^{(l+1)}_j \right)	 \pdv{\mathcal{L}_0}{a^{(l+1)}_j}
 \end{equation}
 
-This equation is what called the backpropagation formula where it got its name
+This equation is  called the backpropagation formula where it got its name
 since the error
 of the
 previous layer depends on the values of the forward layers. This formula
@@ -277,8 +277,9 @@ estimates the gradient that goes into updating the weights.
 % rephrase
 Deep learning continues to evolve rapidly, driven by advances in
 computational power, availability of large datasets, and innovative algorithms.
-It holds the promise of transforming various aspects of human life and industry
-by enabling more intelligent, autonomous systems.
+It holds the promise of transforming various aspects of computational research
+and industry
+by enabling more intelligent autonomous systems.
 
 \section{Deep Neural Molecular Dynamics}
 Machine Learning potentials have very flexible functional form that allows to
@@ -287,6 +288,7 @@ comparable to empirical force fields. Particularly, deep learning molecular
 dynamics relies on using deep neural network trained potential (DeepPotential)
 to simulate the
 dynamics of the molecular system.  DeepPotential Method have basic assumptions
+and features
 \cite{zhang2018deep,zhang2018end},
 namely
 
@@ -302,7 +304,7 @@ namely
           where $\Phi_i$ is represented by	     a		 function
           of atomic coordinates within the local environment of      the
           $i$th atom.
-    \item  the function $\Phi_i$ continuous and differentiable
+    \item  the function $\Phi_i$ is continuous and differentiable
           of atomic coordinates,
     \item the function $\Phi_i$ preserves the translational, rotational,
           and
@@ -321,7 +323,8 @@ matrix
     x_N & y_N & z_N)
 \end{equation}
 
-that lists the absolute coordinates of all the atoms. Then, define a relative
+that lists the absolute coordinates of all the $N$ atoms. Then, define a
+relative
 coordinate matrix of the local environment centered on atom  $i$ as
 
 \begin{equation}
