@@ -322,28 +322,66 @@ and 1 GPa, and still give comparable accuracy as the reference model.
 \end{figure}
 
 \section{Dipole Orientation}
-The distribution of average dipole moment orientation was calculated along the
-direction
-normal to the surface. Specifically, the $\cos(\theta)$ was computed where
+One way to get microscopic properties of the system is by calculating the
+distribution of
+average dipole moment orientation. Specifically, the $\cos(\theta)$ was
+computed where
 $\theta$ is
-the angle between the dipole and the outward normal vector of the surface.
-Positive values correspond to alignment of the dipole with the outward normal
-vector. The result is shown in Figure~\ref{fig:dipole_orient} for different NN
-models. The DNN model trained with bulk and surface environments have an
+the angle between the dipole moment and the outward normal vector of the
+surface as
+schematically shown in Figure~\ref{fig:dipole_scheme}. Positive values
+correspond to alignment of the dipole with the outward normal
+vector. Experimental techniques such as vibrational sum frequency spectroscopy
+have shown that
+the imaginary component of nonlinear susceptibility changes sign twice
+\cite{fan2009structure},
+implying  preferential orientation of water at the
+interface that forms two layers. As shown schematically in Figure~\ref{fig:dipole_expt}, the water molecule in the first layer will align such that one of the OH bond points to the vapor
+phase. The net dipole dipole moment from these covalent bond will orient slightly
+towards the surface. Moreover, between the first and second layer, there are
+hydrogen bonds that can produce an effective dipole moment that have opposite
+direction as the former. These are shown as arrows in Figure~\ref{fig:dipole_guide}. Therefore, it is expected to have a flip in dipole orientation distribution at the interface.
+
+However, only one type of orientation is observed for the  different NNP models, as shown in Figure~\ref{fig:dipole_orient}. The NNP model trained with bulk and surface environments have an
 opposite dipole
-orientation compared to models that were trained on bulk only. However, it is
-expected that for an electrically neutral surface, the average solvent dipole
-orientation is oriented slightly towards the surface (the oxygen pointing
-towards the
-bulk region) \cite{WalkerGibbons2022,Kubincova2020}. In addition, it can be
+orientation compared to models that were trained on bulk only. It can be hypothesized that the bulk+interface trained NNP enhances the dipoles that are pointing down meanwhile the bulk trained NNP enhances dipole that are pointing up.
+
+In addition, it can be
 observed that the bulk region has non zero dipole moment which may be caused by
-small system size leading to finite size effects. It is expected that the net
-dipole moment must be zero due to random thermal reorientation of water
-molecules  inside the bulk.
+small system size which enhances finite size effects. It is expected that there is zero net
+dipole moment inside the bulk due to random thermal reorientation of water
+molecules and by symmetry.
+
+\begin{figure}[tbhp!]
+	\centering
+	\begin{subfigure}{0.47\textwidth}
+		\centering
+
+		\includegraphics[width=0.9\textwidth]{images/dipole_scheme.png}
+		\caption{}
+		\label{fig:dipole_scheme}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.47\textwidth}
+		\centering
+
+		\includegraphics[width=0.9\textwidth]{images/dipole_expt.png}
+		\caption{}
+		\label{fig:dipole_expt}
+	\end{subfigure}
+	\caption{  Schematic diagram of the (a) dipole moment orientation and
+		(b)		existence of two layers in the interface
+		\cite{fan2009structure}.}
+	\label{fig:dipole_guide}
+\end{figure}
+
 \begin{figure}[tbhp!]
 	\centering
 	\includegraphics[width=0.75\linewidth]{images/dipole_dist_new.png}
-	\caption{Dipole Orientation for different NN models. The vertical lines
+	\caption{Dipole Orientation for different NN models. The outward normal
+		vector was set along +z axis for both the top and bottom
+		surface. The vertical
+		lines
 		are
 		the Gibbs Dividing Surface in which the density is half of the
 		bulk value.
