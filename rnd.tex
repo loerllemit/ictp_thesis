@@ -86,13 +86,59 @@ their modelling of water.
 \end{figure}
 
 \section{Neural Network Performance}
-To check the quality of deep NN models, a test was conducted on its performance
-on bulk+interface systems. Table~\ref*{tab:train_perf} lists the mean absolute
+To check the quality of deep NN models, model deviation was calculated for the
+four identical models but different initialization parameters. For each
+new configuration that is explored during MD run, these models
+generate an ensemble of predictions. For each configuration,
+the model deviation is defined as the maximum standard deviation of the
+predicted atomic forces \cite{zhang2019active}. Note that  only the  first
+model was used as pair potential during MD run to dump trajectories and
+pressures during the course of simulation. When the bulk trained NNP was
+used as potential for interfacial systems, the max deviation on forces has much
+error, as shown in Figure~\ref{fig:dev_bulk}, implying that NNP models gave
+significant differing values on forces for
+a given trajectory. This is expected since the bulk trained NNP cannot
+capture features associated with surfaces. During training, the NNP models may
+have different minimized loss function. On the other hand,
+Figure~\ref{fig:dev_bulk_interface} shows that the error is greatly reduced
+when bulk+interface trained NNP was used in simulation of interfacial systems.
+
+\begin{figure}[tbhp]
+	\centering
+	\begin{subfigure}{0.48\textwidth}
+		\centering
+
+		\includegraphics[width=0.9\textwidth]{images/deviation_bulk}
+		\caption{Bulk trained NNP}
+		\label{fig:dev_bulk}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{0.48\textwidth}
+		\centering
+
+		\includegraphics[width=0.9\textwidth]{images/deviation_bulk+interface}
+		\caption{Bulk+Interface trained NNP}
+		\label{fig:dev_bulk_interface}
+	\end{subfigure}
+
+	\caption{Stability of (a) bulk trained NNP and (b) bulk+interface
+		trained NNP when used as pair potential in MD simulation of
+		interfacial
+		systems. }
+	\label{fig:model_dev}
+\end{figure}
+
+A test was conducted to describe the accuracy of the trained neural network
+potentials on prediction of energy, force, and virial with respect to the DFT
+data for interfacial systems.
+Table~\ref{tab:train_perf} lists the mean absolute
 error (MAE) and root mean square error (RMSE) of bulk trained NNP and
-bulk+interface trained NNP for system's properties such as energy, force, and
-virial stress. It can be observed that the error is lower when the NNP is
-trained to include both bulk  and interfaces. This is expected since the model
-was trained to explore both the bulk and interface environments.
+bulk+interface trained NNP. It can be observed that the error is lower when the
+NNP is trained to include both bulk  and interfaces. This is expected since the
+model was trained to explore both the bulk and interface environments.
+Specifically, there is 59\% and 14\% improvement in RMSE for energy per number
+of atoms and force, respectively, for bulk+interface NNP than bulk NNP.
+
 \begin{table}[tbhp!]
 	\centering
 	\caption{Performance of bulk trained NNP and
@@ -141,16 +187,18 @@ was trained to explore both the bulk and interface environments.
 	}
 \end{table}
 
-We check the correlation between the deep NN prediction with the DFT data.
-Figure~\ref{fig:corr_bulk_NN} shows points whose coordinates are the DFT data
+Alternatively, one can check the correlation between the deep NN prediction
+with the DFT data. Figure~\ref{fig:corr_E} shows the total energy points whose
+coordinates are
+the DFT data
 and the predicted ones given
-by the neural network for a bulk-only trained potential. In particular, it can
-be seen that the predicted energies are mostly underestimated which leads to
-higher test error as supported in Table~\ref{tab:train_perf}. The forces are in
-good agreement. However, the predicted $zz$ components of virial tensor are
-mostly overestimated. In contrast, Figure~\ref{fig:corr_bulk+interface_NN}
-shows good agreement across all parameters for a neural network potential
-trained on bulk and interface environments.
+by the neural network, for both bulk trained and bulk+interface trained NNP. In
+particular, it can
+be seen that the predicted energies for the bulk trained NNP are mostly
+underestimated which leads to
+higher test error as supported in Table~\ref{tab:train_perf}. On the other
+hand,  the forces are in good agreement for both types of NNP models as shown
+in Figure~\ref{fig:corr_F}.
 
 \begin{figure}[tbhp!]
 	\centering
@@ -158,31 +206,25 @@ trained on bulk and interface environments.
 		\centering
 
 		\includegraphics[width=0.9\textwidth]{images/bulk_NN_on_interface/2_e_peratom.png}
-		\caption{Energy per atom}
+		\caption{Bulk trained NNP}
 		\label{fig:corr_bulk_NN_E}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}{0.47\textwidth}
 		\centering
 
-		\includegraphics[width=0.9\textwidth]{images/bulk_NN_on_interface/2_force.png}
-		\caption{Force }
-		\label{fig:corr_bulk_NN_F}
+		\includegraphics[width=0.9\textwidth]{images/bulk+interface_NN_on_interface/2_e_peratom.png}
+		\caption{Bulk+Interface trained NNP}
+		\label{fig:corr_bulk+interface_NN_E}
 	\end{subfigure}
-	\hfill
-	\begin{subfigure}{0.9\textwidth}
-		\centering
-
-		\includegraphics[width=0.9\textwidth]{images/bulk_NN_on_interface/2_virial_peratom.png}
-		\caption{Virial per atom}
-		\label{fig:corr_bulk_NN_P}
-	\end{subfigure}
-	\caption{Correlation between deep NN prediction data with the DFT data
+	\caption{Total energy correlation between deep NN prediction data with
+		the DFT data
 		for a
-		model trained on bulk system. The
+		(a) bulk trained NNP model and (b) bulk+interface trained NNP
+		model. The
 		diagonal line shows the perfect agreement between the two
 		data.}
-	\label{fig:corr_bulk_NN}
+	\label{fig:corr_E}
 \end{figure}
 
 \begin{figure}[tbhp!]
@@ -190,36 +232,29 @@ trained on bulk and interface environments.
 	\begin{subfigure}{0.47\textwidth}
 		\centering
 
-		\includegraphics[width=0.9\textwidth]{images/bulk+interface_NN_on_interface/2_e_peratom.png}
-		\caption{Energy per atom}
-		\label{fig:corr_bulk+interface_NN_E}
+		\includegraphics[width=0.9\textwidth]{images/bulk_NN_on_interface/2_force.png}
+		\caption{Bulk trained NNP}
+		\label{fig:corr_bulk_NN_F}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}{0.47\textwidth}
 		\centering
 
 		\includegraphics[width=0.9\textwidth]{images/bulk+interface_NN_on_interface/2_force.png}
-		\caption{Force }
+		\caption{Bulk+Interface trained NNP}
 		\label{fig:corr_bulk+interface_NN_F}
 	\end{subfigure}
-	\hfill
-	\begin{subfigure}{0.9\textwidth}
-		\centering
-
-		\includegraphics[width=0.9\textwidth]{images/bulk+interface_NN_on_interface/2_virial_peratom.png}
-		\caption{Virial per atom}
-		\label{fig:corr_bulk+interface_NN_P}
-	\end{subfigure}
-	\caption{Correlation between deep NN prediction data with the DFT data
-		for
-		a
-		model trained on bulk and interface systems. The
+	\caption{Atomic force correlation between deep NN prediction data with
+		the DFT data
+		for a
+		(a) bulk trained NNP model and (b) bulk+interface trained NNP
+		model. The
 		diagonal line shows the perfect agreement between the two
 		data.}
-	\label{fig:corr_bulk+interface_NN}
+	\label{fig:corr_F}
 \end{figure}
 
-\section{Density}
+\section{Mass Density}
 Figure~\ref{fig:density} shows the mass density of 192 water molecules at 330 K
 for different deep neural network models. DNN model trained on bulk
 environments has bulk
