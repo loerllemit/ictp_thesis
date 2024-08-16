@@ -76,6 +76,23 @@
     \label{fig:conv_r2scan}
 \end{figure}
 
+
+\begin{table}[tbhp!]
+    \centering
+    \caption{Results of fitting of the density profile. The fitting parameters $\rho_l$ and $\rho_v$ are the  coexistence liquid and vapor densities, respectively,  $z_0$ the position of the interface, and $d$ its thickness. The percent error is calculated with respect to the expected value of 1.00 \unit{g/cm^3}.
+    }
+    \label{tab:density_fit}
+    \resizebox{0.7\columnwidth}{!}{%
+        \begin{tabular}{@{}cccccc@{}}
+            \toprule
+                              & $\rho_l$ (\unit{g/cm^3}) & $\rho_v$ (\unit{g/cm^3}) & $z_0$ (\unit{\angstrom}) & $d$ (\unit{\angstrom}) & \%error \\ \midrule
+            Bulk NN           & 0.9739                   & 0.0002037                & 9.220                    & 1.546                  & -2.61   \\
+            Bulk+Interface NN & 0.9941                   & 0.0002578                & 8.744                    & 1.360                  & -0.59   \\
+            Reference NN      & 1.0309                   & 0.0000847                & 9.019                    & 1.410                  & 3.09    \\ \bottomrule
+        \end{tabular}%
+    }
+\end{table}
+
 \clearpage
 
 \section*{Sample Codes}

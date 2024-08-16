@@ -170,7 +170,17 @@ Typical procedure in doing deep neural MD simulation is as follows:
           simulation is
           finished, one can compute properties of the system such as density,
           surface
-          tension, and dipole orientation.	    The surface tension can be
+          tension, and dipole orientation.	 The mass density was fitted according to the formula \cite{sanchez2023deep}
+
+          \begin{equation}
+              \rho(z) = \frac{\rho_l+\rho_v}{2} -  \frac{\rho_l-\rho_v}{2} \tanh\left(\frac{z-z_0}{d} \right)
+              \label{eq:fit_dens}
+          \end{equation}
+
+          where  $\rho_l$ and $\rho_v$ are the  coexistence liquid and vapor densities, respectively,  $z_0$ the position of the interface, and $d$ its thickness.
+
+
+          The surface tension can be
           calculated according to Kirkwood-Buff
           equation
           \cite{kirkwood1949} given by

@@ -264,18 +264,25 @@ a shift of +30 K was applied so that 330 K refers to the new ambient
 temperature \cite{piaggi2021phase}.
 
 Figure~\ref{fig:density} shows the mass density of 192 water molecules at 330 K
-for different deep neural network models. DNN model trained on bulk
+for different deep neural network models. Results of fitting of the mass density profile using Eq.~\ref{eq:fit_dens} are listed in Table~\ref{tab:density_fit}. NNP model trained on bulk
 environments has bulk
-density that is underestimated from the experimental value of 1 \unit{
+density of 0.974 \unit{
+	g/cm^3} that is underestimated by 2.61\% from the experimental value of 1.00 \unit{
 	g/cm^3}. On the other hand, the reference model from the work of
 Sanchez-Burgos et
-al.~\cite{sanchez2023deep}  overestimated the bulk density. Note that the
+al.~\cite{sanchez2023deep} has bulk density of 1.031 \unit{
+	g/cm^3} that is overestimated by 3.09\%. Note that the
 reference model was trained on bulk only environments and using SCAN
 functional. Meanwhile,
-the DNN model trained on  bulk and interface systems  represents the
-bulk density of water accurately. In addition, this model also describes
-the bulk region accurately since the density fluctuations are minimized in
-comparison to the former models.
+the NNP model trained on  bulk and interface systems has a bulk density of  0.994 \unit{
+	g/cm^3} which is the most accurate among the models. In addition, the bulk+interface trained NNP  describes	the bulk region accurately since the fluctuations are small in
+comparison to the other models. Interfacial thickness was quantified
+and the bulk+interface trained NNP has the smallest thickness of 1.360 \unit{\angstrom} among the models followed by reference NNP of thickness 1.410  \unit{\angstrom} then the bulk trained NNP of thickness 1.546  \unit{\angstrom}. Experimental measures of the interfacial thickness are of the order of 3.2 \unit{\angstrom} \cite{braslau1985surface}, about twice larger than the obtained values from NNP models. The large discrepancy has been
+attributed to the suppression of capillary waves due to the finite size of  the simulation cell \cite{matsumoto1988study}.
+
+
+
+
 \begin{figure}[tbhp!]
 	\centering
 	\includegraphics[width=0.65\linewidth]{images/density_330.png}
@@ -287,8 +294,9 @@ comparison to the former models.
 	\label{fig:density}
 \end{figure}
 
+
 \section{Surface Tension}
-Surface tension was calculated according to formula in eqtn.
+Surface tension was calculated according to formula in Eq.
 \eqref{eq:surf_tens}. It is expected that for a bulk system, this equation will
 give zero since there is isotropy of pressure in all directions. However, for
 systems with interfaces, there will be a broken symmetry along the direction
