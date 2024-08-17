@@ -177,7 +177,7 @@ Typical procedure in doing deep neural MD simulation is as follows:
               \label{eq:fit_dens}
           \end{equation}
 
-          where  $\rho_l$ and $\rho_v$ are the  coexistence liquid and vapor densities, respectively,  $z_0$ the position of the interface, and $d$ its thickness.
+          where  $\rho_l$ and $\rho_v$ are the  coexistence liquid and vapor densities, respectively,  $z_0$ the position of the interface, and $d$ its thickness. For large $\rho_l$ than  $\rho_v$,  the thickness $d$ is roughly approximated as the distance between the location where the average density is 50\% of the bulk value and the location where it is 12\% of bulk.
 
 
           The surface tension can be
@@ -191,9 +191,16 @@ Typical procedure in doing deep neural MD simulation is as follows:
               \label{eq:surf_tens}
           \end{equation}
 
-          where $\expval{P_{ij}}$ is the $ij$th element of the pressure tensor,
+          where $\expval{P_{\alpha \beta}}$ is the $\alpha \beta$th element of the pressure tensor,
           and $L_z$ is the total length of the box size in the direction normal
           to the
-          surface.
+          surface. The pressure tensor is computed by \cite{thompson2009general}
+
+          \begin{equation}
+              P_{\alpha \beta} = \frac{1}{V}  \sum_i^N m_i v_{i\alpha} v_{i\beta} + \frac{1}{V}  \sum_i^{N'} R_{i\alpha} F_{i\beta}
+          \end{equation}
+
+          where $V$ is the volume, $N$ is the number of atoms, $N'$ includes atoms in the neighboring image cells, $m_i$ is the mass of $i$th atom; $v_{i\alpha}$, $R_{i\alpha}$ and $F_{i\alpha}$  are the velocity, position, and force of $i$th atom in $\alpha$ direction, respectively. The first term is related to the kinetic energy while the second term is related to the virial.
+
 
 \end{itemize}
