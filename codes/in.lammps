@@ -3,8 +3,8 @@ atom_style atomic
 processors 2 2 1 grid onelevel
 read_data   ./192mol_interface_scaled.lmp  
 
-variable temp_idx   equal 300.0
-variable seed_idx   equal 300
+variable temp_idx   equal 330.0
+variable seed_idx   equal 330
 variable dump_rate  equal 2000
 variable models_dir string "/data/training/bulk+interface/iter.0.1"
 
