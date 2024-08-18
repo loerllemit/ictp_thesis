@@ -3,7 +3,7 @@
 \section{SCAN vs. r$^2$SCAN functional}
 In order to do deep neural network training, one must label the dataset first
 using
-DFT. Implementating DFT calculations requires choosing appropriate parameters
+DFT. Implementing DFT calculations requires choosing appropriate parameters
 such as exchange-correlation functional. Water is a delicate molecule that is
 sensitive to the  complex competition between attractive interactions (e.g.
 hydrogen bond, covalent bond, and van der Waals) that brings order and thermal
@@ -14,7 +14,7 @@ functional
 which is  a nonempirical semilocal meta-GGA functional that satisfies
 all
 known possible 17 exact constraints and  appropriately normed on systems for
-which semilocal functionals can be exact or extremely accurate
+which semilocal functional can be exact or extremely accurate
 ~\cite{sun2015strongly}.  SCAN is not fitted to any bonded system, but it
 predicts certain bonding properties very well such as  atomization
 energies, weak-interaction binding energies, and lattice
@@ -91,7 +91,7 @@ four identical models but different initialization parameters. For each
 new configuration that is explored during MD run, these models
 generate an ensemble of predictions. For each configuration,
 the model deviation is defined as the maximum standard deviation of the
-predicted atomic forces \cite{zhang2019active}. Note that  only the  first
+predicted atomic forces \cite{zhang2019active,zeng2023deepmd}.  Small deviation means the model has learned the given data; otherwise, the given configuration was not covered, and the training data needs to be expanded. Note that  only the  first
 model was used as pair potential during MD run to dump trajectories and
 pressures during the course of simulation. When the bulk trained NNP was
 used as potential for interfacial systems, the max deviation on forces has much
@@ -275,7 +275,7 @@ al.~\cite{sanchez2023deep} has bulk density of 1.031 \unit{
 reference model was trained on bulk only environments and using SCAN
 functional. Meanwhile,
 the NNP model trained on  bulk and interface systems has a bulk density of  0.994 \unit{
-	g/cm^3} which is the most accurate among the models. In addition, the bulk+interface trained NNP  describes	the bulk region accurately since the fluctuations are small in
+	g/cm^3} which is the most accurate among the models. In addition, the bulk+interface trained NNP  describes	accurately the bulk region  because the fluctuations of the density values are small in
 comparison to the other models. Interfacial thickness was quantified
 and the bulk+interface trained NNP has the smallest thickness of 1.360 \unit{\angstrom} among the models followed by reference NNP of thickness 1.410  \unit{\angstrom} then the bulk trained NNP of thickness 1.546  \unit{\angstrom}. Experimental measures of the interfacial thickness are of the order of 3.2 \unit{\angstrom} \cite{braslau1985surface}, about twice larger than the obtained values from NNP models. The large discrepancy has been
 attributed to the suppression of capillary waves due to the finite size of  the simulation cell \cite{matsumoto1988study}.

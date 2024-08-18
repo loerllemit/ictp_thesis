@@ -1,23 +1,17 @@
 \chapter{Theory}
 
-Interactomic Potential Energy Surface (PES) is an important property of the
-system
-that enables us to explain and predict materials properties such as interfacial
-energies, thermal expansion, cohesion, surface tension as well as chemical
-reactions.
-Representing PES accurately and efficiently is a major goal in molecular
-modelling.
-Existing approaches to PES modelling includes ab-initio models based on DFT,
-empirical force fields fitted with experimental data, and the
+Representing the interatomic potential energy surface (PES) both accurately and efficiently is one of the most challenging problems in molecular simulation. The  PES of a system is an important property for reaching an atomic level of understanding of any system type as it contains all the information about the stable and metastable structures, the atomic forces driving the dynamics, the atomic vibrations, the transition states and barriers governing reactions and structural transitions \cite{kocer2022neural}. It enables to  predict materials properties such as interfacial energies, thermal expansion, cohesion, surface tension as well as chemical
+reactions \cite{tersoff1988new,sinnott2012three}. Existing approaches to PES modelling includes ab-initio models based on DFT \cite{car1985unified,Marx2009,kohn1965self},
+empirical force fields fitted with experimental data \cite{Duin2001,brenner2002second,daw1984embedded}, and the
 relatively recent
-machine learning based approach. The first one is accurate, parameter-free, and
+machine learning based approach \cite{Thompson2015,Huan2017,Behler2007,Behler2016,Chmiela2017}. The first one is accurate, parameter-free, and
 transferable but has bad scaling with system size. The second one is
 computationally efficient but has limited accuracy and transferability.
 The third one combines both the advantages of the two previous approaches in
 that it efficiently represents the PES for a
 wide variety of systems with the level of accuracy of ab initio quantum
 mechanics
-models and scales for large systems.
+models and scales linearly with system size.
 
 % https://en.wikipedia.org/wiki/Interatomic_potential
 This work will focus on a particular scheme for molecular modelling, the deep
@@ -33,7 +27,7 @@ the umbrella
 term of Artificial Intelligence
 (AI)
 that focuses on developing algorithms that enable computers to learn from and
-make decisions based on data. It is based on the idea that systems can
+make decisions based on data \cite{James2021,Hastie2009}. It is based on the idea that systems can
 automatically improve their performance on a task through experience without
 human intervention. The algorithm will understand the data by deconstructing it
 in terms of hierarchy of concepts, with each concept defined through its
@@ -133,9 +127,9 @@ dataset.
 where $M$ is the number of test examples in the dataset. An algorithm should be
 introduced to minimize the error  while allowing to gain
 experience by incorporating a training dataset.
-An intuitive way is to minimize the MSE on the training dataset with respect to
-the weights by carrying out
-the minimization problem called Gradient Descent
+An intuitive way to minimize the MSE on the training dataset with respect to
+the weights is by carrying out
+the minimization problem called gradient descent
 
 \begin{equation}
     \nabla_w \text{MSE}_\text{train} \approx 0
@@ -149,7 +143,7 @@ gradient of the loss function.
 \end{equation}
 
 where $\epsilon$ is the learning rate and $n$ is the iteration step. Stochastic
-Gradient Descent extends the well-known Gradient Descent algorithm. Instead of
+Gradient Descent extends the well-known gradient descent algorithm. Instead of
 computing the
 actual gradient, which is computationally expensive for large training
 datasets,  it is replaced
@@ -183,6 +177,7 @@ the previous layer
     \Longrightarrow
     \varphi
     \left( z^{(N)} \right)
+    \label{eq:activation_one_neuron}
 \end{align}
 
 where $w^{(N)}$ and $b^{(N)}$ are the weights and biases of the $N$th layer.
@@ -225,7 +220,7 @@ By Chain Rule,
 To generalize to more than one neurons per layer, one must introduce subscript
 so that $a^{(N)}_j$ denotes the activation of  $j$th neuron in the $N$th layer
 while $w^{(N)}_{jk}$ is the weight that connects the $j$th neuron in the $N$th
-layer with the $k$th neuron in the previous layer. Also, define $z^{(N)}_j =
+layer with the $k$th neuron in the previous layer. Also, Eq.~\eqref{eq:activation_one_neuron} is modified such that the argument  of $\varphi$ is linearly transformed as $z^{(N)}_j =
     \sum_k
     w^{(N)}_{jk} a^{(N-1)}_k + b^{(N)}_j$. The chain rule is modified as
 follows
@@ -255,7 +250,7 @@ follows
     \left( z^{(N)}_j \right)
 \end{align}
 
-Eq.~\eqref{eq:back_prop1} can be rewritten by using
+Equation~\eqref{eq:back_prop1} can be rewritten by using
 Eq.~\eqref{eq:back_prop2} for arbitrary layer $l$ as
 
 \begin{equation}
@@ -272,7 +267,7 @@ previous layer depends on the values of the forward layers. This formula
 estimates the gradient that goes into updating the weights.
 
 Deep learning continues to evolve rapidly, driven by advances in
-computational power, availability of large datasets, and innovative algorithms.
+computational power, availability of large datasets, and innovative algorithms \cite{lecun2015deep,Pramod2021,Sarker2021}.
 It holds the promise of transforming various aspects of computational research
 and industry
 by enabling more intelligent autonomous systems.
@@ -367,7 +362,7 @@ where $s(r)$ is a smooth switching function defined as
 \end{equation}
 
 where $x = \frac{r- r_s}{r_c-r_s}$, $r_c$ is the cutoff radius and $r_s$ is the
-distance from atom $i$ where smoothing is applied. The	smooth cut-off
+distance from atom $i$ where smoothing is applied. The variable $x$ switches from 0 at $r_s$ to 1 at the cutoff radius $r_c$ while the quintic polynomial $\left[x^3 (-6x^2+15x-10)+1\right]$ switches from 1 at $r_s$ to 0 at $r_c$. This form of the polynomial was chosen to satisfy the continuity condition up to the 2nd-order derivative \cite{zeng2023deepmd}. The	smooth cut-off
 parameter $r_s$ allows the components of $\tilde{\mathcal{R}^i}$ to
 go to zero smoothly at the boundary of the local region defined by $r_c$.
 Particularly, the smoothing function $s(r)$ reduces the weight of atoms that
