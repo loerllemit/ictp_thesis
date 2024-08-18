@@ -188,7 +188,7 @@ of atoms and force, respectively, for bulk+interface NNP than bulk NNP.
 \end{table}
 
 Alternatively, one can check the correlation between the deep NN prediction
-with the DFT data. Figure~\ref{fig:corr_E} shows the total energy points whose
+with the DFT data. Figure~\ref{fig:corr_E} shows the relative total energy points whose
 coordinates are
 the DFT data
 and the predicted ones given
@@ -217,12 +217,11 @@ in Figure~\ref{fig:corr_F}.
 		\caption{Bulk+Interface trained NNP}
 		\label{fig:corr_bulk+interface_NN_E}
 	\end{subfigure}
-	\caption{Total energy correlation between deep NN prediction data with
+	\caption{Relative total energy correlation between deep NN prediction data with
 		the DFT data
 		for a
 		(a) bulk trained NNP model and (b) bulk+interface trained NNP
-		model. The
-		diagonal line shows the perfect agreement between the two
+		model. The relative total energy was shifted to the lowest energy of each corresponding data. The diagonal line shows the perfect agreement between the two
 		data.}
 	\label{fig:corr_E}
 \end{figure}
