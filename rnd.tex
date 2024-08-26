@@ -1,77 +1,24 @@
 \chapter{Results and Discussion}
 
-\section{SCAN vs. r$^2$SCAN functional}
-In order to do deep neural network training, one must label the dataset first
-using
-DFT. Implementing DFT calculations requires choosing appropriate parameters
-such as exchange-correlation functional. Water is a delicate molecule that is
-sensitive to the  complex competition between attractive interactions (e.g.
-hydrogen bond, covalent bond, and van der Waals) that brings order and thermal
-fluctuations that brings disorder to the system. A lot of work has attempted to
-describe this delicate nature of water. One promising functional is the
-Strongly Constrained and Appropriately Normed (SCAN)  density
-functional
-which is  a nonempirical semilocal meta-GGA functional that satisfies
-all
-known possible 17 exact constraints and  appropriately normed on systems for
-which semilocal functional can be exact or extremely accurate
-~\cite{sun2015strongly}.  SCAN is not fitted to any bonded system, but it
-predicts certain bonding properties very well such as  atomization
-energies, weak-interaction binding energies, and lattice
-constants of solids, but not the energy barriers to chemical
-reactions. It was shown that SCAN accurately describes covalent bonds, hydrogen
-bonds, and van der Waals interactions that plays important role in the
-structure and dynamics of liquid water~\cite{chen2017ab}. It is one of the
-functionals that predicts ice as less dense than liquid water under standard
-conditions. Unfortunately,
-imposing rigid constraints can cause numerical instabilities for which we have
-observed when applying SCAN for systems with interfaces. Instead, this study
-used a similar but accurate and numerically efficient regularized-restored
-r$^2$SCAN
-meta-generalized gradient
-approximation \cite{Furness2020}. r$^2$SCAN functional is based on the
-previously proposed rSCAN functional that regularizes or relaxes some of the
-constraints of SCAN in order to improve
-numerical performance \cite{bartok2019}. r$^2$SCAN functional restores again
-the constraints but with more consistent error in grid density,
-requiring smaller
-grids to
-achieve good accuracy.
+\section{SCAN vs.\ r$^2$SCAN functional}
+In order to perform deep neural network training, one must first label the dataset using DFT. Implementing DFT calculations requires selecting appropriate parameters, such as the exchange-correlation functional. Water is a delicate molecule, sensitive to the complex competition between attractive interactions (e.g., hydrogen bonds, covalent bonds, and van der Waals forces), which bring order, and thermal fluctuations, which introduce disorder into the system. Numerous studies have attempted to describe this delicate nature of water. One promising functional is the Strongly Constrained and Appropriately Normed (SCAN) density functional, which is a non-empirical semilocal meta-GGA functional that satisfies all 17 known exact constraints and is appropriately normed on systems for which a semilocal functional can be exact or extremely accurate~\cite{sun2015strongly}. SCAN is not fitted to any bonded system, yet it predicts certain bonding properties very well, such as atomization energies, weak-interaction binding energies, and lattice constants of solids, although it does not predict energy barriers to chemical reactions. It has been shown that SCAN accurately describes covalent bonds, hydrogen bonds, and van der Waals interactions, which play important roles in the structure and dynamics of liquid water~\cite{chen2017ab}. It is also one of the functionals that predict ice as less dense than liquid water under standard conditions. Unfortunately, imposing rigid constraints can cause numerical instabilities, as we observed when applying SCAN to systems with interfaces. Instead, this study used a similar but more accurate and numerically efficient regularized-restored r$^2$SCAN meta-generalized gradient approximation~\cite{Furness2020}. The r$^2$SCAN functional is based on the previously proposed rSCAN functional, which regularizes or relaxes some of the constraints of SCAN to improve numerical performance~\cite{bartok2019}. The r$^2$SCAN functional restores these constraints but with a more consistent error in grid density, requiring smaller grids to achieve good accuracy.
 
-We performed a comparison between SCAN	and r$^2$SCAN exchange-correlation
-functional to determine the extent of the discrepancy of the two functionals.
-Figures~\ref{fig:scan_r2scan_E} and~\ref{fig:scan_r2scan_F}
-shows that the total relative energy and atomic forces are in good agreement
-between the two functionals. The computed root mean square error of the two
-forces was
-0.048 \unit{eV/\angstrom}, which is on the same magnitude as typical
-validation
-errors
-on ML models. See Figure~\ref{fig:scan_r2scan_F_dist} for the distribution
-plot of the error in forces.  Convergence tests were conducted
-to determine the appropriate
-energy cut-offs for the DFT calculations. As shown in
-Figures~\ref{fig:conv_scan} and \ref{fig:conv_r2scan}, a  cutoff of 130 Ry  is
-adequate to have convergence on  energy, force, and pressure for both the SCAN
-and r$^2$SCAN functional. This is also consistent to what Chen et al.
-\cite{chen2017ab} used in
-their modelling of water.
+We conducted a comparison between the SCAN and r$^2$SCAN exchange-correlation functionals to determine the extent of the discrepancy between the two. Figures~\ref{fig:scan_r2scan_E} and~\ref{fig:scan_r2scan_F} show that the total relative energy and atomic forces are in good agreement between the two functionals. The computed root mean square error of the forces was 0.048 \unit{eV/\angstrom}, which is of the same magnitude as typical validation errors in ML models. See Figure~\ref{fig:scan_r2scan_F_dist} for the distribution plot of the error in forces. Convergence tests were conducted to determine the appropriate energy cut-offs for the DFT calculations. As shown in Figures~\ref{fig:conv_scan} and~\ref{fig:conv_r2scan}, a cutoff of 130 Ry is adequate for convergence on energy, force, and pressure for both the SCAN and r$^2$SCAN functionals. This is also consistent with what Chen et al.~\cite{chen2017ab} used in their modeling of water.
+
 \begin{figure}[tbhp]
 	\centering
 	\begin{subfigure}{0.48\textwidth}
 		\centering
 
 		\includegraphics[width=0.9\textwidth]{images/scan_vs_r2scan/energy_compare.png}
-		\caption{Relative Total Energy Comparison}
-		\label{fig:scan_r2scan_E}
+		\caption{Relative Total Energy Comparison}\label{fig:scan_r2scan_E}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}{0.48\textwidth}
 		\centering
 
 		\includegraphics[width=0.9\textwidth]{images/scan_vs_r2scan/force_compare.png}
-		\caption{Atomic Force Comparison}
-		\label{fig:scan_r2scan_F}
+		\caption{Atomic Force Comparison}\label{fig:scan_r2scan_F}
 	\end{subfigure}
 
 	\caption{Correlation of  (a) relative total energy and (b) atomic force
@@ -81,27 +28,11 @@ their modelling of water.
 		diagonal line shows the
 		perfect
 		agreement between
-		the two functionals.}
-	\label{fig:scan_r2scan}
+		the two functionals.}\label{fig:scan_r2scan}
 \end{figure}
 
 \section{Neural Network Performance}
-To check the quality of deep NN models, model deviation was calculated for the
-four identical models but different initialization parameters. For each
-new configuration that is explored during MD run, these models
-generate an ensemble of predictions. For each configuration,
-the model deviation is defined as the maximum standard deviation of the
-predicted atomic forces \cite{zhang2019active,zeng2023deepmd}.  Small deviation means the model has learned the given data; otherwise, the given configuration was not covered, and the training data needs to be expanded. Note that  only the  first
-model was used as many-body potential during MD run to dump trajectories and
-pressures during the course of simulation. When the bulk trained NNP was
-used as potential for interfacial systems, the max deviation on forces has much
-error, as shown in Figure~\ref{fig:dev_bulk}, implying that NNP models gave
-significant differing values on forces for
-a given trajectory. This is expected since the bulk trained NNP cannot
-capture features associated with surfaces. During training, the NNP models may
-have different minimized loss function. On the other hand,
-Figure~\ref{fig:dev_bulk_interface} shows that the error is greatly reduced
-when bulk+interface trained NNP was used in simulation of interfacial systems.
+To assess the quality of deep NN models, model deviation was calculated for four identical models with different initialization parameters. For each new configuration explored during an MD run, these models generate an ensemble of predictions. The model deviation for each configuration is defined as the maximum standard deviation of the predicted atomic forces~\cite{zhang2019active,zeng2023deepmd}.  A small deviation indicates that the model has learned the given data; otherwise, it suggests that the configuration was not adequately covered, and the training data needs to be expanded. Note that only the first model was used as a many-body potential during the MD run to generate trajectories and pressures throughout the simulation. When the bulk-trained NNP was used as a potential for interfacial systems, the maximum deviation in forces showed significant error, as depicted in Figure~\ref{fig:dev_bulk}, indicating that the NNP models produced significantly different force values for a given trajectory. This outcome is expected since the bulk-trained NNP cannot capture features associated with surfaces. During training, the NNP models may have converged to different minimized loss functions. On the other hand, Figure~\ref{fig:dev_bulk_interface} shows that the error is greatly reduced when the bulk+interface-trained NNP was used in the simulation of interfacial systems.
 
 \begin{figure}[tbhp]
 	\centering
@@ -109,47 +40,34 @@ when bulk+interface trained NNP was used in simulation of interfacial systems.
 		\centering
 
 		\includegraphics[width=0.9\textwidth]{images/deviation_bulk}
-		\caption{Bulk trained NNP}
-		\label{fig:dev_bulk}
+		\caption{Bulk-trained NNP}\label{fig:dev_bulk}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}{0.48\textwidth}
 		\centering
 
 		\includegraphics[width=0.9\textwidth]{images/deviation_bulk+interface}
-		\caption{Bulk+Interface trained NNP}
-		\label{fig:dev_bulk_interface}
+		\caption{Bulk+Interface-trained NNP}\label{fig:dev_bulk_interface}
 	\end{subfigure}
 
-	\caption{Stability of (a) bulk trained NNP and (b) bulk+interface
+	\caption{Stability of (a) bulk-trained NNP and (b) bulk+interface
 		trained NNP when used as many-body potential in MD simulation of
 		interfacial
-		systems. }
-	\label{fig:model_dev}
+		systems. }\label{fig:model_dev}
 \end{figure}
 
-A test was conducted to describe the accuracy of the trained neural network
-potentials on prediction of energy, force, and virial with respect to the DFT
-data for interfacial systems.
-Table~\ref{tab:train_perf} lists the mean absolute
-error (MAE) and root mean square error (RMSE) of bulk trained NNP and
-bulk+interface trained NNP. It can be observed that the error is lower when the
-NNP is trained to include both bulk  and interfaces. This is expected since the
-model was trained to explore both the bulk and interface environments.
-Specifically, there is 59\% and 14\% improvement in RMSE for energy per number
-of atoms and force, respectively, for bulk+interface NNP than bulk NNP.
+A test was conducted to evaluate the accuracy of the trained neural network potentials in predicting energy, force, and virial relative to DFT data for interfacial systems. Table~\ref{tab:train_perf} lists the mean absolute error (MAE) and root mean square error (RMSE) for the bulk-trained NNP and the bulk+interface-trained NNP. The results show that the error is lower when the NNP is trained to include both bulk and interface environments. This is expected, as the model was trained to explore both bulk and interface environments. Specifically, there is a 59\% and 14\% improvement in RMSE for energy per atom and force, respectively, with the bulk+interface NNP compared to the bulk NNP.
 
 \begin{table}[tbhp!]
 	\centering
-	\caption{Performance of bulk trained NNP and
-		bulk+interface trained NNP on bulk+interface validation
-		dataset.}
-	\label{tab:train_perf}
+	\caption{Performance of bulk-trained NNP and
+		bulk+interface-trained NNP on bulk+interface validation
+		dataset.}\label{tab:train_perf}
 	\resizebox{0.7\columnwidth}{!}{%
 		\begin{tabular}{@{}lcc@{}}
 			\toprule
-			                        & Bulk trained NNP &
-			Bulk+Interface trained NNP
+			                        & Bulk-trained NNP &
+			Bulk+Interface-trained NNP
 			\\
 			\midrule
 			Energy MAE (eV)         & \num{5.195E-01}  &
@@ -187,18 +105,8 @@ of atoms and force, respectively, for bulk+interface NNP than bulk NNP.
 	}
 \end{table}
 
-Alternatively, one can check the correlation between the deep NN prediction
-with the DFT data. Figure~\ref{fig:corr_E} shows the relative total energy points whose
-coordinates are
-the DFT data
-and the predicted ones given
-by the neural network, for both bulk trained and bulk+interface trained NNP. In
-particular, it can
-be seen that the predicted energies for the bulk trained NNP are mostly
-underestimated which leads to
-higher test error as supported in Table~\ref{tab:train_perf}. On the other
-hand,  the forces are in good agreement for both types of NNP models as shown
-in Figure~\ref{fig:corr_F}.
+Alternatively, one can check the correlation between the deep NN predictions and the DFT data. Figure~\ref{fig:corr_E} shows the relative total energy points, with the DFT data on one axis and the predictions from the neural network on the other, for both the bulk-trained and bulk+interface-trained NNP models. Notably, it can be seen that the predicted energies for the bulk-trained NNP are mostly underestimated, leading to higher test errors, as shown in Table~\ref{tab:train_perf}. On the other hand, the forces are in good agreement for both types of NNP models, as shown in Figure~\ref{fig:corr_F}.
+
 
 \begin{figure}[tbhp!]
 	\centering
@@ -206,24 +114,21 @@ in Figure~\ref{fig:corr_F}.
 		\centering
 
 		\includegraphics[width=0.9\textwidth]{images/bulk_NN_on_interface/2_e_peratom.png}
-		\caption{Bulk trained NNP}
-		\label{fig:corr_bulk_NN_E}
+		\caption{Bulk-trained NNP}\label{fig:corr_bulk_NN_E}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}{0.47\textwidth}
 		\centering
 
 		\includegraphics[width=0.9\textwidth]{images/bulk+interface_NN_on_interface/2_e_peratom.png}
-		\caption{Bulk+Interface trained NNP}
-		\label{fig:corr_bulk+interface_NN_E}
+		\caption{Bulk+Interface-trained NNP}\label{fig:corr_bulk+interface_NN_E}
 	\end{subfigure}
 	\caption{Relative total energy correlation between deep NN prediction data with
 		the DFT data
 		for a
-		(a) bulk trained NNP model and (b) bulk+interface trained NNP
+		(a) bulk-trained NNP model and (b) bulk+interface-trained NNP
 		model. The relative total energy was shifted to the lowest energy of each corresponding data. The diagonal line shows the perfect agreement between the two
-		data.}
-	\label{fig:corr_E}
+		data.}\label{fig:corr_E}
 \end{figure}
 
 \clearpage
@@ -234,52 +139,29 @@ in Figure~\ref{fig:corr_F}.
 		\centering
 
 		\includegraphics[width=0.9\textwidth]{images/bulk_NN_on_interface/2_force.png}
-		\caption{Bulk trained NNP}
-		\label{fig:corr_bulk_NN_F}
+		\caption{Bulk-trained NNP}\label{fig:corr_bulk_NN_F}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}{0.47\textwidth}
 		\centering
 
 		\includegraphics[width=0.9\textwidth]{images/bulk+interface_NN_on_interface/2_force.png}
-		\caption{Bulk+Interface trained NNP}
-		\label{fig:corr_bulk+interface_NN_F}
+		\caption{Bulk+Interface-trained NNP}\label{fig:corr_bulk+interface_NN_F}
 	\end{subfigure}
 	\caption{Atomic force correlation between deep NN prediction data with
 		the DFT data
 		for a
-		(a) bulk trained NNP model and (b) bulk+interface trained NNP
+		(a) bulk-trained NNP model and (b) bulk+interface-trained NNP
 		model. The
 		diagonal line shows the perfect agreement between the two
-		data.}
-	\label{fig:corr_F}
+		data.}\label{fig:corr_F}
 \end{figure}
 
 \section{Mass Density}
-For all MD simulations, the temperature was set at ambient temperature of 300
-K. To account the shift of melting temperature of ice when using SCAN
-functional,
-a shift of +30 K was applied so that 330 K refers to the new ambient
-temperature \cite{piaggi2021phase}.
 
-Figure~\ref{fig:density} shows the mass density of 192 water molecules at 330 K
-for different deep neural network models. Results of fitting of the mass density profile using Eq.~\ref{eq:fit_dens} are listed in Table~\ref{tab:density_fit}. NNP model trained on bulk
-environments has bulk
-density of 0.974 \unit{
-	g/cm^3} that is underestimated by 2.61\% from the experimental value of 1.00 \unit{
-	g/cm^3}. On the other hand, the reference model from the work of
-Sanchez-Burgos et
-al.~\cite{sanchez2023deep} has bulk density of 1.031 \unit{
-	g/cm^3} that is overestimated by 3.09\%. Note that the
-reference model was trained on bulk only environments and using SCAN
-functional. Meanwhile,
-the NNP model trained on  bulk and interface systems has a bulk density of  0.994 \unit{
-	g/cm^3} which is the most accurate among the models. In addition, the bulk+interface trained NNP  describes	accurately the bulk region  because the fluctuations of the density values are small in
-comparison to the other models. Interfacial thickness was quantified
-and the bulk+interface trained NNP has the smallest thickness of 1.360 \unit{\angstrom} among the models followed by reference NNP of thickness 1.410  \unit{\angstrom} then the bulk trained NNP of thickness 1.546  \unit{\angstrom}. Experimental measures of the interfacial thickness are of the order of 3.2 \unit{\angstrom} \cite{braslau1985surface}, about twice larger than the obtained values from NNP models. The large discrepancy has been
-attributed to the suppression of capillary waves due to the finite size of  the simulation cell \cite{matsumoto1988study}.
+For all MD simulations, the temperature was set to the ambient temperature of 300 K. To account for the shift in the melting temperature of ice when using the SCAN functional, a +30 K adjustment was applied, so 330 K represents the new ambient temperature~\cite{piaggi2021phase}.
 
-
+Figure~\ref{fig:density} shows the mass density of 192 water molecules at 330 K for different deep neural network models. The results of fitting the mass density profile using Eq.\ref{eq:fit_dens} are listed in Table\ref{tab:density_fit}. The NNP model trained on bulk environments has a bulk density of 0.974 \unit{g/cm^3}, which is underestimated by 2.61\% from the experimental value of 1.00 \unit{g/cm^3}. In contrast, the reference model from the work of Sanchez-Burgos et al.~\cite{sanchez2023deep} has a bulk density of 1.031 \unit{g/cm^3}, which is overestimated by 3.09\%. Note that the reference model was trained on bulk environments only and used the SCAN functional. Meanwhile, the NNP model trained on both bulk and interface systems has a bulk density of 0.994 \unit{g/cm^3}, which is the most accurate among the models. Additionally, the bulk+interface-trained NNP accurately describes the bulk region, as indicated by the smaller fluctuations in density values compared to the other models. Interfacial thickness was also quantified, with the bulk+interface-trained NNP having the smallest thickness of 1.360 \unit{\angstrom} among the models, followed by the reference NNP with a thickness of 1.410 \unit{\angstrom}, and then the bulk-trained NNP with a thickness of 1.546 \unit{\angstrom}. Experimental measurements of interfacial thickness are of the order of 3.2 \unit{\angstrom}~\cite{braslau1985surface}, about twice as large as the values obtained from the NNP models. This large discrepancy has been attributed to the suppression of capillary waves due to the finite size of the simulation cell~\cite{matsumoto1988study}.
 
 
 \begin{figure}[tbhp!]
@@ -289,75 +171,32 @@ attributed to the suppression of capillary waves due to the finite size of  the 
 		network
 		models. The reference model is based on trained model of
 		Sanchez-Burgos et
-		al.~\cite{sanchez2023deep}. }
-	\label{fig:density}
+		al.~\cite{sanchez2023deep}. }\label{fig:density}
 \end{figure}
 
 
 \section{Surface Tension}
-Surface tension was calculated according to formula in Eq.
-\eqref{eq:surf_tens}. It is expected that for a bulk system, this equation will
-give zero since there is isotropy of pressure in all directions. However, for
-systems with interfaces, there will be a broken symmetry along the direction
-normal to the surface, which will effectively get nonzero surface tension.
+Surface tension was calculated according to the formula in Eq.~\eqref{eq:surf_tens}. For a bulk system, this equation is expected to yield zero since pressure is isotropic in all directions. However, for systems with interfaces, symmetry is broken along the direction normal to the surface, resulting in a nonzero surface tension.
 
-Figure~\ref{fig:surf_tens} shows the plot of the surface
-tension as a function of temperature for different NNP models. The bulk-only
-trained NNP model has very poor results that is greatly underestimated and
-starts to plateaus at above 400 K. Meanwhile, the bulk+interface trained NNP
-model
-improved the surface
-tension much better than  bulk-only trained NNP model, and gets much better at
-higher
-temperature. This result supports the idea that surface defects play a role in
-predicting
-the interfacial properties such as surface tension. The reference
-model is more accurate even though the model was trained on  bulk only
-environments. However, the reference model was trained for a very large
-training dataset that includes both ice and liquid phases and vast
-thermodynamic range up to 2000 K and 50 GPa \cite{zhang2021phase}. However, our
-bulk+interface trained NNP model was trained on thermodynamic range up to 600 K
-and 1 GPa, and still give comparable accuracy as the reference model.
+Figure~\ref{fig:surf_tens} shows the plot of surface tension as a function of temperature for different NNP models. The bulk-only trained NNP model produces poor results, with significantly underestimated values that begin to plateau above 400 K. In contrast, the bulk+interface-trained NNP model shows a much better improvement in surface tension predictions, particularly at higher temperatures. This result supports the idea that surface defects play a role in accurately predicting interfacial properties such as surface tension. The reference model is more accurate, even though it was trained only on bulk environments. However, the reference model was trained on a very large dataset that includes both ice and liquid phases and covers a vast thermodynamic range up to 2000 K and 50 GPa~\cite{zhang2021phase}. In comparison, our bulk+interface-trained NNP model was trained over a thermodynamic range up to 600 K and 1 GPa, yet still provides comparable accuracy to the reference model.
+
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{images/surface_tension.png}
 	\caption{Surface tension for different NNP models. The
 		reference model is based on trained model of Sanchez-Burgos et
-		al.~\cite{sanchez2023deep}.  }
-	\label{fig:surf_tens}
+		al.~\cite{sanchez2023deep}.  }\label{fig:surf_tens}
 \end{figure}
 
 \section{Dipole Orientation}
-One way to get microscopic properties of the system is by calculating the
-distribution of
-average dipole moment orientation. Specifically, the $\cos(\theta)$ was
-computed where
-$\theta$ is
-the angle between the dipole moment and the outward normal vector of the
-surface as
-schematically shown in Figure~\ref{fig:dipole_scheme}. Positive values
-correspond to alignment of the dipole with the outward normal
-vector. Experimental techniques such as vibrational sum frequency spectroscopy
-have shown that
-the imaginary component of nonlinear susceptibility changes sign twice
-\cite{fan2009structure},
-implying  preferential orientation of water at the
-interface that forms two layers. As shown schematically in Figure~\ref{fig:dipole_expt}, the water molecule in the first layer will align such that one of the OH bond points to the vapor
-phase. The net dipole dipole moment from these covalent bond will orient slightly
-towards the surface. Moreover, between the first and second layer, there are
-hydrogen bonds that can produce an effective dipole moment that have opposite
-direction as the former. These are shown as arrows in Figure~\ref{fig:dipole_guide}. Therefore, it is expected to have a flip in dipole orientation distribution at the interface.
 
-However, only one type of orientation is observed for the  different NNP models, as shown in Figure~\ref{fig:dipole_orient}. The NNP model trained with bulk and surface environments have an
-opposite dipole
-orientation compared to models that were trained on bulk only. It can be hypothesized that the bulk+interface trained NNP enhances the dipoles that are pointing down meanwhile the bulk trained NNP enhances dipole that are pointing up.
+One way to obtain microscopic properties of a system is by calculating the distribution of the average dipole moment orientation. Specifically, the $\cos(\theta)$ was computed, where $\theta$ is the angle between the dipole moment and the outward normal vector of the surface, as schematically shown in Figure~\ref{fig:dipole_scheme}. Positive values correspond to alignment of the dipole with the outward normal vector. Experimental techniques, such as vibrational sum frequency spectroscopy, have shown that the imaginary component of nonlinear susceptibility changes sign twice~\cite{fan2009structure}, implying a preferential orientation of water at the interface that forms two layers. As shown schematically in Figure\ref{fig:dipole_expt}, the water molecule in the first layer will align such that one of the OH bonds points toward the vapor phase. The net dipole moment from these covalent bonds will orient slightly towards the surface. Moreover, between the first and second layers, hydrogen bonds can produce an effective dipole moment in the opposite direction of the first layer. These are depicted as arrows in Figure~\ref{fig:dipole_guide}. Therefore, a flip in dipole orientation distribution at the interface is expected.
 
-In addition, it can be
-observed that the bulk region has non zero dipole moment which may be caused by
-small system size which enhances finite size effects. It is expected that there is zero net
-dipole moment inside the bulk due to random thermal reorientation of water
-molecules and by symmetry.
+However, as shown in Figure~\ref{fig:dipole_orient}, only one type of orientation is observed for the different NNP models. The NNP model trained with both bulk and surface environments exhibits an opposite dipole orientation compared to models trained on bulk environments only. It can be hypothesized that the bulk+interface-trained NNP enhances dipoles pointing downward, while the bulk-trained NNP enhances dipoles pointing upward.
+
+Additionally, it can be observed that the bulk region shows a nonzero dipole moment, which may be caused by the small system size, enhancing finite-size effects. Ideally, there should be zero net dipole moment inside the bulk due to the random thermal reorientation of water molecules and by symmetry.
+
 
 \begin{figure}[tbhp!]
 	\centering
@@ -365,21 +204,17 @@ molecules and by symmetry.
 		\centering
 
 		\includegraphics[width=0.9\textwidth]{images/dipole_scheme.png}
-		\caption{}
-		\label{fig:dipole_scheme}
+		\caption{}\label{fig:dipole_scheme}
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}{0.47\textwidth}
 		\centering
 
 		\includegraphics[width=0.9\textwidth]{images/dipole_expt.png}
-		\caption{}
-		\label{fig:dipole_expt}
+		\caption{}\label{fig:dipole_expt}
 	\end{subfigure}
 	\caption{  Schematic diagram of the (a) dipole moment orientation and
-		(b)		existence of two layers in the interface
-		\cite{fan2009structure}.}
-	\label{fig:dipole_guide}
+		(b)		existence of two layers in the interface~\cite{fan2009structure}.}\label{fig:dipole_guide}
 \end{figure}
 
 \begin{figure}[tbhp!]
@@ -392,8 +227,7 @@ molecules and by symmetry.
 		are
 		the Gibbs Dividing Surface in which the density is half of the
 		bulk value.
-	}
-	\label{fig:dipole_orient}
+	}\label{fig:dipole_orient}
 \end{figure}
 
 
