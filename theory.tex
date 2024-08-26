@@ -1,10 +1,10 @@
 \chapter{Theory}
 
-Representing the interatomic potential energy surface (PES) both accurately and efficiently is one of the most challenging problems in molecular simulation. The  PES of a system is an important property for reaching an atomic level of understanding of any system type as it contains all the information about the stable and metastable structures, the atomic forces driving the dynamics, the atomic vibrations, the transition states and barriers governing reactions and structural transitions \cite{kocer2022neural}. It enables to  predict materials properties such as interfacial energies, thermal expansion, cohesion, surface tension as well as chemical
-reactions \cite{tersoff1988new,sinnott2012three}. Existing approaches to PES modelling includes ab-initio models based on DFT \cite{car1985unified,Marx2009,kohn1965self},
-empirical force fields fitted with experimental data \cite{Duin2001,brenner2002second,daw1984embedded}, and the
+Representing the interatomic potential energy surface (PES) both accurately and efficiently is one of the most challenging problems in molecular simulation. The  PES of a system is an important property for reaching an atomic level of understanding of any system type as it contains all the information about the stable and metastable structures, the atomic forces driving the dynamics, the atomic vibrations, the transition states and barriers governing reactions and structural transitions~\cite{kocer2022neural}. It enables to  predict materials properties such as interfacial energies, thermal expansion, cohesion, surface tension as well as chemical
+reactions~\cite{tersoff1988new,sinnott2012three}. Existing approaches to PES modelling includes ab-initio models based on DFT~\cite{car1985unified,Marx2009,kohn1965self},
+empirical force fields fitted with experimental data~\cite{Duin2001,brenner2002second,daw1984embedded}, and the
 relatively recent
-machine learning based approach \cite{Thompson2015,Huan2017,Behler2007,Behler2016,Chmiela2017}. The first one is accurate, parameter-free, and
+machine learning based approach~\cite{Thompson2015,Huan2017,Behler2007,Behler2016,Chmiela2017}. The first one is accurate, parameter-free, and
 transferable but has bad scaling with system size. The second one is
 computationally efficient but has limited accuracy and transferability.
 The third one combines both the advantages of the two previous approaches in
@@ -27,14 +27,14 @@ the umbrella
 term of Artificial Intelligence
 (AI)
 that focuses on developing algorithms that enable computers to learn from and
-make decisions based on data \cite{James2021,Hastie2009}. It is based on the idea that systems can
+make decisions based on data~\cite{James2021,Hastie2009}. It is based on the idea that systems can
 automatically improve their performance on a task through experience without
 human intervention. The algorithm will understand the data by deconstructing it
 in terms of hierarchy of concepts, with each concept defined through its
 relation to simpler concepts. This allows the algorithm to learn complicated
 concepts by building from simpler ones. Tasks such as classification,
 regression, transcription, clustering, translation, to name a few can be solved
-by ML \cite{Goodfellow2016}.
+by ML~\cite{Goodfellow2016}.
 
 
 Regression learning works by allowing the program to fit an input of dimension
@@ -50,7 +50,7 @@ Deep Learning is a type of ML that mimics the function of a
 neuron in the living systems. It is divided into layers that constitutes the
 input, output and multiple hidden layers where each layers contains collection
 of
-`neurons' or nodes as schematically shown in Figure \ref{fig:DL}. An algorithm
+`neurons' or nodes as schematically shown in Figure~\ref{fig:DL}. An algorithm
 with one
 hidden layer is
 considered an Artificial Neural Network (ANN). Specifically, the algorithm is a
@@ -76,8 +76,7 @@ outputs are not desired.
     \includegraphics[width=0.5\linewidth]{images/DL.png}
     \caption{Typical configuration of a Deep Learning algorithm with 2 hidden
         layers that maps a $\mathfrak{R}^3$ input vector to a scalar output
-        vector.}
-    \label{fig:DL}
+        vector.}\label{fig:DL}
 \end{figure}
 
 To explain how each functions work, we look closely to the mathematical
@@ -103,9 +102,8 @@ linear functions (ReLu).
     \centering
     \includegraphics[width=0.5\linewidth]{images/artificial_neuron.pdf}
     \caption{The mathematical model of a neuron as first introduced by
-        McCulloch and Pitts \cite{mcculloch1943logical}. Image taken at
-        commons.wikimedia.org/wiki/File:Artificial\_neuron\_structure.svg}
-    \label{fig:neuron_struc}
+        McCulloch and Pitts~\cite{mcculloch1943logical}. Image taken at
+        commons.wikimedia.org/wiki/File:Artificial\_neuron\_structure.svg}\label{fig:neuron_struc}
 \end{figure}
 
 One way to assess the performance of the training model is to compute the loss
@@ -267,7 +265,7 @@ previous layer depends on the values of the forward layers. This formula
 estimates the gradient that goes into updating the weights.
 
 Deep learning continues to evolve rapidly, driven by advances in
-computational power, availability of large datasets, and innovative algorithms \cite{lecun2015deep,Pramod2021,Sarker2021}.
+computational power, availability of large datasets, and innovative algorithms~\cite{lecun2015deep,Pramod2021,Sarker2021}.
 It holds the promise of transforming various aspects of computational research
 and industry
 by enabling more intelligent autonomous systems.
@@ -279,8 +277,7 @@ comparable to empirical force fields. Particularly, deep learning molecular
 dynamics relies on using deep neural network trained potential (DeepPotential)
 to simulate the
 dynamics of the molecular system.  DeepPotential Method have basic assumptions
-and features
-\cite{zhang2018deep,zhang2018end},
+and features~\cite{zhang2018deep,zhang2018end},
 namely
 
 \begin{itemize}
@@ -362,7 +359,7 @@ where $s(r)$ is a smooth switching function defined as
 \end{equation}
 
 where $x = \frac{r- r_s}{r_c-r_s}$, $r_c$ is the cutoff radius and $r_s$ is the
-distance from atom $i$ where smoothing is applied. The variable $x$ switches from 0 at $r_s$ to 1 at the cutoff radius $r_c$ while the quintic polynomial $\left[x^3 (-6x^2+15x-10)+1\right]$ switches from 1 at $r_s$ to 0 at $r_c$. This form of the polynomial was chosen to satisfy the continuity condition up to the 2nd-order derivative \cite{zeng2023deepmd}. The	smooth cut-off
+distance from atom $i$ where smoothing is applied. The variable $x$ switches from 0 at $r_s$ to 1 at the cutoff radius $r_c$ while the quintic polynomial $\left[x^3 (-6x^2+15x-10)+1\right]$ switches from 1 at $r_s$ to 0 at $r_c$. This form of the polynomial was chosen to satisfy the continuity condition up to the 2nd-order derivative~\cite{zeng2023deepmd}. The	smooth cut-off
 parameter $r_s$ allows the components of $\tilde{\mathcal{R}^i}$ to
 go to zero smoothly at the boundary of the local region defined by $r_c$.
 Particularly, the smoothing function $s(r)$ reduces the weight of atoms that
