@@ -1,7 +1,7 @@
 \chapter*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
 
-This thesis explores the challenges and issues in modelling  many-body potential energy surface
+This thesis explores the challenges and issues in modelling the many-body potential energy surface
 for liquid water interfaces by means of developing deep neural network potential  scheme for molecular dynamics simulations (DPMD), as implemented in DeePMD-kit. We focus on modelling  neat water interfaces by training the datasets of bulk and bulk+interface systems with Density Functional Theory (DFT) level of accuracy and linear scale efficiency of empirical force fields. In addition, DPMD can be parallelized due to its local decomposition and  near-neighbor dependence of  atomic energies. The generated deep neural network potential (NNP) was assessed according to its predictability in obtaining relevant system properties such as mass density, surface tension, and dipole orientation. Due to numerical instabilities using SCAN functional for interfaces, we used instead a similar  but accurate and numerically efficient regularized-restored r$^2$SCAN functional in labelling the datasets. Neural network potential trained on only bulk
 systems did not perform well when used on trajectories containing interfaces. Adding interface dataset to the training
 did improve the prediction  of macroscopic properties, implying that surface defects

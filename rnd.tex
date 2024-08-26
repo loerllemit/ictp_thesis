@@ -92,7 +92,7 @@ new configuration that is explored during MD run, these models
 generate an ensemble of predictions. For each configuration,
 the model deviation is defined as the maximum standard deviation of the
 predicted atomic forces \cite{zhang2019active,zeng2023deepmd}.  Small deviation means the model has learned the given data; otherwise, the given configuration was not covered, and the training data needs to be expanded. Note that  only the  first
-model was used as pair potential during MD run to dump trajectories and
+model was used as many-body potential during MD run to dump trajectories and
 pressures during the course of simulation. When the bulk trained NNP was
 used as potential for interfacial systems, the max deviation on forces has much
 error, as shown in Figure~\ref{fig:dev_bulk}, implying that NNP models gave
@@ -122,7 +122,7 @@ when bulk+interface trained NNP was used in simulation of interfacial systems.
 	\end{subfigure}
 
 	\caption{Stability of (a) bulk trained NNP and (b) bulk+interface
-		trained NNP when used as pair potential in MD simulation of
+		trained NNP when used as many-body potential in MD simulation of
 		interfacial
 		systems. }
 	\label{fig:model_dev}
